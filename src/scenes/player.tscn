@@ -1,26 +1,39 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/sprites/Personagem_pronto-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://scripts/player.gd" type="Script" id=2]
+[ext_resource path="res://scripts/weak_spot.gd" type="Script" id=3]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 6.54973
-height = 11.0048
-
-[sub_resource type="CapsuleShape2D" id=2]
-radius = 6.70122
-height = 10.4803
+[sub_resource type="CircleShape2D" id=12]
 
 [sub_resource type="Animation" id=3]
 resource_name = "attack"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("HumanBase2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 24, 25, 26, 27, 28, 29, 30 ]
+}
 
 [sub_resource type="Animation" id=4]
-resource_name = "jump"
+resource_name = "crouch"
 
 [sub_resource type="Animation" id=5]
-resource_name = "sand_side"
+resource_name = "jump"
+
+[sub_resource type="Animation" id=6]
+resource_name = "stand_front"
+
+[sub_resource type="Animation" id=7]
+resource_name = "stand_side"
 length = 0.1
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("HumanBase2:frame")
 tracks/0/interp = 1
@@ -31,15 +44,18 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 25 ]
+"values": [ 48 ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "stand_front"
+[sub_resource type="Animation" id=8]
+resource_name = "take_out_sword"
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=9]
+resource_name = "take_sword"
+
+[sub_resource type="Animation" id=10]
 resource_name = "walk"
-length = 0.2
+length = 0.6
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("HumanBase2:frame")
@@ -48,10 +64,26 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 5, 6 ]
+"values": [ 8, 9, 11, 12, 14, 15 ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "walk_without_sword"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("HumanBase2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 16, 17, 18, 19, 20, 21, 22, 23 ]
 }
 
 [node name="player" type="KinematicBody2D"]
@@ -62,23 +94,19 @@ position = Vector2( 136.862, 104.248 )
 texture = ExtResource( 1 )
 vframes = 9
 hframes = 8
+frame = 8
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="damage_area" type="Area2D" parent="."]
 position = Vector2( 136.656, 104.424 )
 collision_layer = 4
 collision_mask = 4
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
-shape = SubResource( 1 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( 136.684, 104.403 )
-shape = SubResource( 2 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="damage_area"]
+shape = SubResource( 12 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 138.895, 105.457 )
@@ -87,8 +115,31 @@ zoom = Vector2( 0.2, 0.2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 3 )
-anims/jump = SubResource( 4 )
-anims/sand_side = SubResource( 5 )
+anims/crouch = SubResource( 4 )
+anims/jump = SubResource( 5 )
 anims/stand_front = SubResource( 6 )
-anims/walk = SubResource( 7 )
-[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+anims/stand_side = SubResource( 7 )
+anims/take_out_sword = SubResource( 8 )
+anims/take_sword = SubResource( 9 )
+anims/walk = SubResource( 10 )
+anims/walk_without_sword = SubResource( 11 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+position = Vector2( 136.656, 104.361 )
+polygon = PoolVector2Array( 8.41565, -0.213943, 7.84778, -13.1562, -5.92134, -13.1562, -6.43979, -0.852364, -5.77383, 11.7395, 8.13625, 11.7732 )
+
+[node name="attack" type="Area2D" parent="."]
+visible = false
+
+[node name="direita" type="CollisionPolygon2D" parent="attack"]
+polygon = PoolVector2Array( 145.974, 101.276, 149.965, 101.235, 149.965, 105.227, 145.938, 105.197 )
+disabled = true
+
+[node name="esquerda" type="CollisionPolygon2D" parent="attack"]
+scale = Vector2( 0.859445, 1.00246 )
+polygon = PoolVector2Array( 145.974, 101.276, 149.965, 101.235, 149.965, 105.227, 145.938, 105.197 )
+disabled = true
+[connection signal="damage" from="damage_area" to="." method="_on_damage_area_damage"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
+[connection signal="area_entered" from="attack" to="." method="_on_attack_area_entered"]

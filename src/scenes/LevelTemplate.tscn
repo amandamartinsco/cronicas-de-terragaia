@@ -1,14 +1,15 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/tileset/tilset.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/tilset.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8.36734, 7.72256 )
+extents = Vector2( 8.36734, 8.11215 )
 
 [node name="LevelTemplate" type="Node2D"]
 
 [node name="Tileset" type="Sprite" parent="."]
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 16, 16 )
@@ -256,7 +257,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="Tileset23"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Tileset23/StaticBody2D"]
-polygon = PoolVector2Array( 15.8811, -0.033987, 13.9759, 0.0850897, -0.0664215, 7.74902, -0.19426, 16.101, 15.8216, 16.1605 )
+polygon = PoolVector2Array( 15.993, 0.0562985, 13.9759, 0.0850897, -0.0664215, 7.74902, -0.19426, 16.101, 15.8216, 16.1605 )
 
 [node name="Tileset24" type="Sprite" parent="."]
 position = Vector2( 96, 0 )
@@ -271,7 +272,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="Tileset24"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Tileset24/StaticBody2D"]
-polygon = PoolVector2Array( 15.9371, 7.77125, -0.000724792, 15.1993, -0.0283127, 15.9441, 15.713, 16.1789 )
+polygon = PoolVector2Array( 15.9371, 7.77125, 0.0170517, 15.2788, 0, 16, 15.713, 16.1789 )
 
 [node name="Tileset12" type="Sprite" parent="."]
 position = Vector2( 48, 0 )
@@ -317,7 +318,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="Tileset19"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Tileset19/StaticBody2D"]
-polygon = PoolVector2Array( 15.9165, 15.9993, -0.204216, 16.0906, -0.204216, 7.24279, 15.9165, 15.2545 )
+polygon = PoolVector2Array( 15.9962, 15.9866, -0.204216, 16.0906, -0.204216, 7.24279, 15.9858, 15.31 )
 
 [node name="Tileset13" type="Sprite" parent="."]
 position = Vector2( 48, 48 )
@@ -382,3 +383,33 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tileset16/StaticBody2D"]
 position = Vector2( 8.03234, 8.10544 )
 shape = SubResource( 1 )
+
+[node name="Tileset25" type="Sprite" parent="."]
+position = Vector2( 64, 32 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 128, 0, 32, 64 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Tileset26" type="Sprite" parent="."]
+position = Vector2( 96, 32 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 112, 32, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Tileset27" type="Sprite" parent="."]
+position = Vector2( 112, 32 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 96, 32, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
