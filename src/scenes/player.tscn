@@ -60,9 +60,8 @@ script = ExtResource( 2 )
 [node name="HumanBase2" type="Sprite" parent="."]
 position = Vector2( 136.862, 104.248 )
 texture = ExtResource( 1 )
-vframes = 6
-hframes = 5
-frame = 26
+vframes = 9
+hframes = 8
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2( 136.656, 104.424 )
