@@ -20,26 +20,31 @@ func _physics_process(delta: float) -> void:
 	if is_on_wall():
 		velocity.x = velocity.x * -1
 		$"RayCast2D".cast_to.x *= -1
-	
 		
 	if $"RayCast2D".is_colliding():
 		if velocity.x < 0:
 			velocity.x = -30
+			$BaseArmoredDemo.flip_h = false
 			
 		if velocity.x >= 0:
 			velocity.x = 30		
-			
+			$BaseArmoredDemo.flip_h = true
+		$AnimationPlayer.play("run")
 	else:
 		if velocity.x < 0:
 			velocity.x = -15
+			$BaseArmoredDemo.flip_h = false
 			
 		if velocity.x >= 0:
 			velocity.x = 15		
+			$BaseArmoredDemo.flip_h = true
+		$AnimationPlayer.play("walk")	
+	
+	
 	move_and_slide(velocity, UP)
 	
 func _on_VisibilityNotifier2D_screen_entered() -> void:
 	set_physics_process(true)
-
 
 func _on_VisibilityNotifier2D_screen_exited() -> void:
 	set_physics_process(false)

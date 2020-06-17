@@ -20,6 +20,18 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	direction = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	velocity.x = 100 * direction
+	
+	if direction >= 0:
+		$HumanBase2.flip_h = false
+		
+	if direction <0:
+		$HumanBase2.flip_h = true
+	
+	if direction != 0:
+		$AnimationPlayer.play("walk")
+		
+	if direction == 0:
+		$AnimationPlayer.play("sand_side")
 
 	move_and_slide(velocity, UP)
 
@@ -27,9 +39,6 @@ func _on_damage_area_damage(damage, node) -> void:
 	life -= damage
 	
 	emit_signal("life_scale", (float(self.life) / float(self.init_life)))
-
-
-
 
 func _on_Area2D_area_entered(area):
 	_on_damage_area_damage(50, $".")
