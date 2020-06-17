@@ -9,7 +9,7 @@ extents = Vector2( 16.4259, 8.066 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 16.3565, 7.65247 )
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 resource_name = "die"
 length = 0.5
 loop = true
@@ -26,8 +26,7 @@ tracks/0/keys = {
 "values": [ 4, 8 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "run"
+[sub_resource type="Animation" id=4]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -43,8 +42,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "walk"
+[sub_resource type="Animation" id=5]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -60,7 +58,9 @@ tracks/0/keys = {
 "values": [ 12, 13, 14 ]
 }
 
-[node name="enemy" type="KinematicBody2D"]
+[node name="enemy" type="KinematicBody2D" groups=[
+"enemy",
+]]
 collision_layer = 2
 script = ExtResource( 2 )
 __meta__ = {
@@ -70,6 +70,7 @@ __meta__ = {
 [node name="BaseArmoredDemo" type="Sprite" parent="."]
 position = Vector2( -0.811874, -4.8105 )
 scale = Vector2( 0.8, 0.8 )
+z_index = 1
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 4
@@ -95,8 +96,9 @@ position = Vector2( -0.892622, 0.2079 )
 shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/die = SubResource( 5 )
-anims/run = SubResource( 3 )
-anims/walk = SubResource( 4 )
+anims/die = SubResource( 3 )
+anims/run = SubResource( 4 )
+anims/walk = SubResource( 5 )
 [connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

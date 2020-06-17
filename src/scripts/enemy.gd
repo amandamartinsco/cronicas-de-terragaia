@@ -8,6 +8,8 @@ const UP = Vector2(0, -1)
 
 var comeco = false
 
+signal pode_dropar(pd)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	velocity.x = - velocity.x
@@ -48,3 +50,9 @@ func _on_VisibilityNotifier2D_screen_entered() -> void:
 
 func _on_VisibilityNotifier2D_screen_exited() -> void:
 	set_physics_process(false)
+
+
+
+func _on_Area2D_area_entered(area):
+	emit_signal("pode_dropar", $".".position)
+	print($".".position)

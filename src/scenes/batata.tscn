@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/sprites/Curry_Ingredient_Pack_of_Potatoes_Sprite.png" type="Texture" id=1]
+[ext_resource path="res://scripts/batata.gd" type="Script" id=2]
+
+[node name="KinematicBody2D" type="KinematicBody2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.062177, 0.0612414 )
+texture = ExtResource( 1 )
+centered = false
+offset = Vector2( 0, -200 )
