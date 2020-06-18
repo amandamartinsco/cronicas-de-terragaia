@@ -93,6 +93,5 @@ func _on_weak_spot_damage(damage, node) -> void:
 	life -= damage
 	emit_signal("life_scale_enemy", (float(self.life) / float(self.init_life)))
 
-
 func _on_attack_area_shape_entered(area_id: int, area: Area2D, area_shape: int, self_shape: int) -> void:
 	pass
