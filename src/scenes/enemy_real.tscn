@@ -124,4 +124,4 @@ color = Color( 0.117647, 0.286275, 0.870588, 1 )
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="damage" from="weak_spot" to="." method="_on_weak_spot_damage"]
 [connection signal="area_entered" from="attack" to="." method="_on_attack_area_entered"]
-[connection signal="area_shape_entered" from="attack" to="." method="_on_attack_area_shape_entered"]
+[connection signal="area_exited" from="attack" to="." method="_on_attack_area_exited"]

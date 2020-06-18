@@ -22,6 +22,8 @@ export var life = 100
 
 onready var init_life = life
 
+var can_take_damage = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	velocity.x = - velocity.x
@@ -86,13 +88,12 @@ func _on_VisibilityNotifier2D_screen_exited() -> void:
 #	emit_signal("pode_dropar", $".".position)
 
 func _on_attack_area_entered(area: Area2D) -> void:
+	can_take_damage = false
 	if area.has_method("hit"):
 		area.hit(damage, self)
 
 func _on_weak_spot_damage(damage, node) -> void:
-	life -= damage
-	emit_signal("life_scale_enemy", (float(self.life) / float(self.init_life)))
+		#print(node.get_parent().get_filename())
+		life -= damage
+		emit_signal("life_scale_enemy", (float(self.life) / float(self.init_life)))
 
-
-func _on_attack_area_shape_entered(area_id: int, area: Area2D, area_shape: int, self_shape: int) -> void:
-	pass
