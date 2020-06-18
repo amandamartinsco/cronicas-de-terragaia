@@ -13,7 +13,7 @@ extents = Vector2( 21.0079, 8.08706 )
 
 [sub_resource type="Animation" id=3]
 resource_name = "die"
-length = 0.5
+length = 0.4
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("BaseArmoredDemo:frame")
@@ -26,6 +26,42 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 4, 8 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BaseArmoredDemo:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BaseArmoredDemo:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.352941 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BaseArmoredDemo:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -74,7 +110,7 @@ position = Vector2( 3.8158, -7.89562 )
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 4
-frame = 14
+frame = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 3.79654, 0 )
@@ -96,11 +132,6 @@ visible = false
 position = Vector2( 3.79654, 0 )
 shape = SubResource( 2 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/die = SubResource( 3 )
-anims/run = SubResource( 4 )
-anims/walk = SubResource( 5 )
-
 [node name="attack" type="Area2D" parent="."]
 collision_layer = 2
 
@@ -115,13 +146,17 @@ polygon = PoolVector2Array( -15.6075, -7.405, -10.4068, -7.57552, -10.9184, 2.82
 disabled = true
 
 [node name="barradevida_inimigo" parent="." instance=ExtResource( 4 )]
-margin_left = -13.5185
-margin_top = -19.2764
-margin_right = 14.4815
-margin_bottom = -11.2764
+margin_left = -11.0
+margin_top = -15.0
+margin_right = 14.0
+margin_bottom = -11.0
 color = Color( 0.117647, 0.286275, 0.870588, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/die = SubResource( 3 )
+anims/run = SubResource( 4 )
+anims/walk = SubResource( 5 )
 [connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="damage" from="weak_spot" to="." method="_on_weak_spot_damage"]
 [connection signal="area_entered" from="attack" to="." method="_on_attack_area_entered"]
-[connection signal="area_exited" from="attack" to="." method="_on_attack_area_exited"]
