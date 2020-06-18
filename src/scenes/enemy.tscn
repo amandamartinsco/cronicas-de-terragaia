@@ -41,15 +41,12 @@ margin_top = 46.8025
 margin_right = 347.547
 margin_bottom = 76.8025
 
-[node name="ParallaxBackground" parent="." instance=ExtResource( 5 )]
-layer = -99
-offset = Vector2( 470, -200 )
-transform = Transform2D( 1, 0, 0, 1, 470, -200 )
-
 [node name="KinematicBody2D" parent="." instance=ExtResource( 7 )]
 position = Vector2( 209.561, 80.2411 )
 
 [node name="potato_enemy" parent="." instance=ExtResource( 8 )]
 position = Vector2( 306.635, 99.7134 )
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 5 )]
 
 [editable path="player"]
