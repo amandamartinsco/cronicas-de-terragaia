@@ -10,7 +10,7 @@ var direction = 0
 
 signal life_scale(sc)
 
-export var life = 300
+export var life = 100
 
 onready var init_life = life
 	
@@ -63,7 +63,6 @@ func _physics_process(delta: float) -> void:
 
 func _on_damage_area_damage(damage, node) -> void:
 	life -= damage
-	print(life)
 	emit_signal("life_scale", (float(self.life) / float(self.init_life)))
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
@@ -81,4 +80,4 @@ func _on_AnimationPlayer_animation_started(anim_name: String) -> void:
 func _on_attack_area_entered(area: Area2D) -> void:
 	if area.has_method("hit"):
 		area.hit(damage, self)
-
+	print(area.get_parent().get_filename())

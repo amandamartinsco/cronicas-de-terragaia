@@ -16,6 +16,12 @@ var olhar_direita = true
 
 signal pode_dropar(pd)
 
+signal life_scale_enemy(sc)
+
+export var life = 100
+
+onready var init_life = life
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	velocity.x = - velocity.x
@@ -82,4 +88,11 @@ func _on_VisibilityNotifier2D_screen_exited() -> void:
 func _on_attack_area_entered(area: Area2D) -> void:
 	if area.has_method("hit"):
 		area.hit(damage, self)
-	print(area)
+
+func _on_weak_spot_damage(damage, node) -> void:
+	life -= damage
+	emit_signal("life_scale_enemy", (float(self.life) / float(self.init_life)))
+
+
+func _on_attack_area_shape_entered(area_id: int, area: Area2D, area_shape: int, self_shape: int) -> void:
+	pass

@@ -98,8 +98,7 @@ frame = 8
 
 [node name="damage_area" type="Area2D" parent="."]
 position = Vector2( 136.656, 104.424 )
-collision_layer = 4
-collision_mask = 4
+collision_mask = 2
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
@@ -130,6 +129,7 @@ polygon = PoolVector2Array( 8.41565, -0.213943, 7.84778, -13.1562, -5.92134, -13
 
 [node name="attack" type="Area2D" parent="."]
 visible = false
+collision_mask = 2
 
 [node name="direita" type="CollisionPolygon2D" parent="attack"]
 polygon = PoolVector2Array( 145.974, 101.276, 149.965, 101.235, 149.965, 105.227, 145.938, 105.197 )

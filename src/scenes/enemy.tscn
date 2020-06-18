@@ -29,6 +29,9 @@ position = Vector2( 211.465, 103.98 )
 ] instance=ExtResource( 3 )]
 position = Vector2( 109.374, -0.144588 )
 
+[node name="HumanBase2" parent="player" index="0"]
+frame = 24
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" parent="CanvasLayer" instance=ExtResource( 4 )]
