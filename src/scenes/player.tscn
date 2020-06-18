@@ -29,10 +29,23 @@ resource_name = "jump"
 
 [sub_resource type="Animation" id=6]
 resource_name = "stand_front"
+tracks/0/type = "value"
+tracks/0/path = NodePath("HumanBase2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 48 ]
+}
 
 [sub_resource type="Animation" id=7]
 resource_name = "stand_side"
 length = 0.1
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("HumanBase2:frame")
 tracks/0/interp = 1
@@ -105,6 +118,7 @@ __meta__ = {
 }
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="damage_area"]
+visible = false
 position = Vector2( 0, -0.0626678 )
 polygon = PoolVector2Array( 8.27789, -0.0501328, 7.84778, -13.1562, -5.92134, -13.1562, -6.11082, -0.742638, -5.77383, 11.7395, 8.13625, 11.7732 )
 
@@ -125,6 +139,7 @@ anims/walk = SubResource( 10 )
 anims/walk_without_sword = SubResource( 11 )
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+visible = false
 position = Vector2( 136.656, 104.361 )
 polygon = PoolVector2Array( 8.27789, -0.0501328, 7.84778, -13.1562, -5.92134, -13.1562, -6.11082, -0.742638, -5.77383, 11.7395, 8.13625, 11.7732 )
 

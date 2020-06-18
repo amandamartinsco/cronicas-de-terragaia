@@ -58,7 +58,7 @@ func _physics_process(delta: float) -> void:
 		#direção zera(fica parado)
 		if is_attacking == false:
 			#se ele não estiver atacando
-			$AnimationPlayer.play("stand_side")
+			$AnimationPlayer.play("stand_front")
 			
 	if Input.is_action_just_pressed("ui_attack") and is_attacking == false:
 		#espaço é o botão de ataque
