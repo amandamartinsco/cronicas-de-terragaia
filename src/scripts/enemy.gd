@@ -113,7 +113,7 @@ func _on_VisibilityNotifier2D_screen_exited() -> void:
 	set_physics_process(false)
 
 #func _on_Area2D_area_entered(area):
-#	emit_signal("pode_dropar", $".".position)
+#	
 
 #se a área de ataque encontrar outra área que tem o método hit, ela manda o damage pra ela
 func _on_attack_area_entered(area: Area2D) -> void:
@@ -130,5 +130,8 @@ func _on_weak_spot_damage(damage, node) -> void:
 		#escala é mandado pra escala da barra de vidaa
 		if life <= 0:
 			$AnimationPlayer.play("die")
-			yield($AnimationPlayer, "animation_finished")
+			#yield($AnimationPlayer, "animation_finished")
+			emit_signal("pode_dropar", $".".position) 
+			#o sinal é mandado indicando que é possível dropar o item agora
 			queue_free()
+			
