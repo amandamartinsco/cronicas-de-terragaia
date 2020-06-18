@@ -74,7 +74,7 @@ position = Vector2( 3.8158, -7.89562 )
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 4
-frame = 14
+frame = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 3.79654, 0 )
@@ -96,11 +96,6 @@ visible = false
 position = Vector2( 3.79654, 0 )
 shape = SubResource( 2 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/die = SubResource( 3 )
-anims/run = SubResource( 4 )
-anims/walk = SubResource( 5 )
-
 [node name="attack" type="Area2D" parent="."]
 collision_layer = 2
 
@@ -120,8 +115,12 @@ margin_top = -15.0
 margin_right = 14.0
 margin_bottom = -11.0
 color = Color( 0.117647, 0.286275, 0.870588, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/die = SubResource( 3 )
+anims/run = SubResource( 4 )
+anims/walk = SubResource( 5 )
 [connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="damage" from="weak_spot" to="." method="_on_weak_spot_damage"]
 [connection signal="area_entered" from="attack" to="." method="_on_attack_area_entered"]
-[connection signal="area_exited" from="attack" to="." method="_on_attack_area_exited"]

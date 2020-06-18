@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/enemy_real.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tileset/cenario.tres" type="TileSet" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://scenes/ParallaxBackground.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/ParallaxBackground1.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/batata.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/potato_enemy.tscn" type="PackedScene" id=8]
 
 [node name="enemy" type="Node2D"]
 
@@ -52,5 +53,8 @@ transform = Transform2D( 1, 0, 0, 1, 0, -500 )
 [node name="KinematicBody2D" parent="." instance=ExtResource( 7 )]
 visible = false
 position = Vector2( 197.437, 79.0785 )
+
+[node name="potato_enemy" parent="." instance=ExtResource( 8 )]
+position = Vector2( 306.635, 99.7134 )
 
 [editable path="player"]
