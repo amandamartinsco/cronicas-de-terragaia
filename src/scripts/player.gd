@@ -48,14 +48,28 @@ func _physics_process(delta: float) -> void:
 			$AnimationPlayer.play("stand_side")
 			
 	if Input.is_action_just_pressed("ui_attack") and is_attacking == false:
+		if olhar_direita:
+			$attack/esquerda.disabled = true
+			$attack/direita.disabled = false
+		
+		if olhar_esquerda:
+			$attack/esquerda.disabled = false
+			$attack/esquerda.visible = true
+			$attack/direita.disabled = true	
+					
 		is_attacking = true
 		if is_attacking:
 			direction = 0
 		$AnimationPlayer.play("attack")
 		yield($AnimationPlayer, "animation_finished")
-		$attack/direita.disabled = false
-		$attack/esquerda.disabled = false
+		$attack/direita.disabled = true
+		$attack/esquerda.disabled = true
+		$attack/esquerda.visible = false
 		is_attacking = false
+		
+#
+#	if $attack/direita.disabled == false:
+#		$attack/direita.visible = false
 		
 			
 	velocity.x = 50 * direction
@@ -69,15 +83,18 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	is_attacking = false
 
 func _on_AnimationPlayer_animation_started(anim_name: String) -> void:
-	if olhar_direita:
-		$attack/esquerda.disabled = true
-		$attack/direita.disabled = false
-		
-	if olhar_esquerda:
-		$attack/esquerda.disabled = false
-		$attack/direita.disabled = true	
-
+#	if olhar_direita:
+#		$attack/esquerda.disabled = true
+#		$attack/direita.disabled = false
+#
+#	if olhar_esquerda:
+#		$attack/esquerda.disabled = false
+#		$attack/direita.disabled = true	
+	pass
+	
 func _on_attack_area_entered(area: Area2D) -> void:
 	if area.has_method("hit"):
 		area.hit(damage, self)
-	print(area.get_parent().get_filename())
+	#print(area.get_parent().get_filename())
+
+
