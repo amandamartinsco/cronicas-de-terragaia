@@ -30,7 +30,7 @@ position = Vector2( 211.465, 103.98 )
 position = Vector2( 109.374, -0.144588 )
 
 [node name="HumanBase2" parent="player" index="0"]
-frame = 24
+frame = 30
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

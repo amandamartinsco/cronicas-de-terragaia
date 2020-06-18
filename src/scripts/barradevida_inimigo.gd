@@ -1,5 +1,7 @@
 extends ColorRect
 
+#exatamente a mesma lógica do "barradevida"
+
 onready var init_rect_size = rect_size
 
 var scale = 1 setget set_scale

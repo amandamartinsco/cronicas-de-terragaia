@@ -115,10 +115,10 @@ polygon = PoolVector2Array( -15.6075, -7.405, -10.4068, -7.57552, -10.9184, 2.82
 disabled = true
 
 [node name="barradevida_inimigo" parent="." instance=ExtResource( 4 )]
-margin_left = -13.5185
-margin_top = -19.2764
-margin_right = 14.4815
-margin_bottom = -11.2764
+margin_left = -11.0
+margin_top = -15.0
+margin_right = 14.0
+margin_bottom = -11.0
 color = Color( 0.117647, 0.286275, 0.870588, 1 )
 [connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
