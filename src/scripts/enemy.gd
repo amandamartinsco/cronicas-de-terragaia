@@ -27,6 +27,8 @@ export var life = 100
 onready var init_life = life
 #guarda a vida inicial
 
+var live = false
+
 func _ready() -> void:
 	velocity.x = - velocity.x
 	#começa andando pra esqueda
@@ -34,6 +36,9 @@ func _ready() -> void:
 	#começa desativado, só será ativado quando o inimigo entrar na tela
 
 func _physics_process(delta: float) -> void:
+	if life > 0:
+		live = true
+		
 	$RayCast2D.enabled = true
 	#ativa o RayCast
 	
@@ -120,5 +125,10 @@ func _on_attack_area_entered(area: Area2D) -> void:
 
 func _on_weak_spot_damage(damage, node) -> void:
 		life -= damage
+		print(life)
 		emit_signal("life_scale_enemy", (float(self.life) / float(self.init_life)))
 		#escala é mandado pra escala da barra de vidaa
+		if life <= 0:
+			$AnimationPlayer.play("die")
+			yield($AnimationPlayer, "animation_finished")
+			queue_free()
