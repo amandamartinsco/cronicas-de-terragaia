@@ -27,4 +27,4 @@ func _on_Area2D_area_entered(area):
 	if pode_pegar:
 		queue_free()
 		if area.get_parent().has_method("get_bonus_life"):	
-			POWER.add_power(10)
+			POWER.add_power(50)
