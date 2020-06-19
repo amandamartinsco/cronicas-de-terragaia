@@ -29,6 +29,8 @@ onready var init_life = life
 
 var live = false
 
+var pre_apple = preload("res://scenes/apple_blue.tscn")
+
 func _ready() -> void:
 	velocity.x = - velocity.x
 	#começa andando pra esqueda
@@ -112,9 +114,6 @@ func _on_VisibilityNotifier2D_screen_entered() -> void:
 func _on_VisibilityNotifier2D_screen_exited() -> void:
 	set_physics_process(false)
 
-#func _on_Area2D_area_entered(area):
-#	
-
 #se a área de ataque encontrar outra área que tem o método hit, ela manda o damage pra ela
 func _on_attack_area_entered(area: Area2D) -> void:
 	if area.has_method("hit"):
@@ -125,13 +124,18 @@ func _on_attack_area_entered(area: Area2D) -> void:
 
 func _on_weak_spot_damage(damage, node) -> void:
 		life -= damage
-		print(life)
 		emit_signal("life_scale_enemy", (float(self.life) / float(self.init_life)))
 		#escala é mandado pra escala da barra de vidaa
 		if life <= 0:
+			spawn_maca()
 			$AnimationPlayer.play("die")
 			#yield($AnimationPlayer, "animation_finished")
 			emit_signal("pode_dropar", $".".position) 
 			#o sinal é mandado indicando que é possível dropar o item agora
 			queue_free()
+			
+func spawn_maca():
+	var maca = pre_apple.instance()
+	maca.global_position = self.global_position - Vector2(0,20)
+	get_parent().add_child(maca)	
 			
