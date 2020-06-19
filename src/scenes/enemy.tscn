@@ -62,7 +62,7 @@ margin_bottom = 76.8025
 [node name="power" parent="UI" instance=ExtResource( 6 )]
 margin_left = 408.207
 margin_top = 46.6568
-margin_right = 533.207
+margin_right = 508.207
 margin_bottom = 72.6568
 color = Color( 0.0901961, 0.0862745, 0.843137, 0 )
 
