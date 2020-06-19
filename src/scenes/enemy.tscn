@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/enemy_real.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tileset/cenario.tres" type="TileSet" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://scenes/barradevida.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/ParallaxBackground.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/batata.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/potato_enemy.tscn" type="PackedScene" id=8]
 
 [node name="enemy" type="Node2D"]
 
@@ -41,12 +40,12 @@ margin_top = 46.8025
 margin_right = 347.547
 margin_bottom = 76.8025
 
-[node name="KinematicBody2D" parent="." instance=ExtResource( 7 )]
+[node name="Maca1" parent="." instance=ExtResource( 7 )]
 position = Vector2( 209.561, 80.2411 )
 
-[node name="potato_enemy" parent="." instance=ExtResource( 8 )]
-position = Vector2( 306.635, 99.7134 )
-
 [node name="ParallaxBackground" parent="." instance=ExtResource( 5 )]
+
+[node name="Maca2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 718.245, 79.7347 )
 
 [editable path="player"]

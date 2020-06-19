@@ -21,7 +21,7 @@ signal pode_dropar(pd)
 signal life_scale_enemy(sc)
 #sinal que mostra a escala da barra de vida do inimigo
 
-export var life = 100
+export var life = 20
 #vida do inimigo
 
 onready var init_life = life
