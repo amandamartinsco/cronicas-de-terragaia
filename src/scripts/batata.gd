@@ -21,6 +21,7 @@ func _physics_process(delta: float) -> void:
 	velocity.y = gravity
 	#a velocidade no eixo y é equivalente à gravidade
 	move_and_slide(velocity)
+	
 
 func _on_Area2D_area_entered(area):
 	if pode_pegar:
