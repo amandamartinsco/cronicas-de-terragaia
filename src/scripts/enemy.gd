@@ -138,4 +138,4 @@ func spawn_maca():
 	var maca = pre_apple.instance()
 	maca.global_position = self.global_position - Vector2(0,20)
 	get_parent().add_child(maca)	
-			
+	#é pra usar call_deferred mas se usar não colisão entre a maçã e o personagem		

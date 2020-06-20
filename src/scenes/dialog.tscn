@@ -67,7 +67,7 @@ __meta__ = {
 }
 
 [node name="next-indicator" type="Sprite" parent="TextureRect"]
-position = Vector2( 1131.23, 202.228 )
+position = Vector2( 1131.23, 220 )
 scale = Vector2( 0.802691, 1.06341 )
 texture = ExtResource( 3 )
 

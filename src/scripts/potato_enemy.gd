@@ -24,6 +24,10 @@ signal life_scale_enemy(sc)
 export var life = 100
 #vida do inimigo
 
+var pre_shoot = preload("res://scenes/shoot_poison.tscn")
+
+var can_shoot:bool
+
 onready var init_life = life
 #guarda a vida inicial
 
@@ -59,7 +63,10 @@ func _physics_process(delta: float) -> void:
 		
 	$AnimationPlayer.play("walk")	
 					
-
+#	if can_shoot:
+#		print("atirando")
+#		shoot()
+		
 	move_and_slide(velocity, UP)
 	
 	#se ele entrar na tela, a física começa a funcionar
@@ -74,3 +81,23 @@ func _on_weak_spot_damage(damage, node) -> void:
 		life -= damage
 		emit_signal("life_scale_enemy", (float(self.life) / float(self.init_life)))
 		#escala é mandado pra escala da barra de vidaa
+
+func _on_shoot_timeout() -> void:
+	get_node("subshoot").start()
+	get_node("shoot2").start()
+
+func shoot():
+	can_shoot = false
+	var poison = pre_shoot.instance()
+	poison.global_position = get_node("Position2D").global_position
+	if olhar_direita:
+		poison.dir = Vector2(1,0)
+	if olhar_esquerda:
+		poison.dir = Vector2(-1,0)
+	get_parent().add_child(poison)
+
+func _on_subshoot_timeout() -> void:
+	get_node("shoot2").stop()
+
+func _on_shoot2_timeout() -> void:
+	shoot()

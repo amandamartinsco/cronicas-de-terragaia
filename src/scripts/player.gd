@@ -31,21 +31,36 @@ export var speed = 75
 
 var can_stand:bool
 
+var has_sword_bainha = false
+
+var has_just_bainha = false
+
+var can_switch_sword = true
+
+var t
+
 func _ready() -> void:
-	#POWER.add_power(0)
-	pass
+	get_tree().get_nodes_in_group("swords")[0].connect("get_sword", self, "got_sword")
+
 func _physics_process(delta: float) -> void:
 	var is_jump_interrupted = Input.is_action_just_released("jump") and velocity.y < 0
 		
 	if Input.is_action_just_released("jump"):
-		$AnimationPlayer.play("fall")
+		if has_sword_bainha or has_just_bainha:
+			$AnimationPlayer.play("fall")
+		else:
+			$AnimationPlayer.play("fall-sword")
+			
 		yield($AnimationPlayer, "animation_finished")
 		can_stand = true
 	
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		can_stand = false
 		direction.y = -1.0
-		$AnimationPlayer.play("jump")
+		if has_sword_bainha or has_just_bainha:
+			$AnimationPlayer.play("jump")
+		else:
+			$AnimationPlayer.play("jump-sword")
 	else:
 		direction.y = 0.0
 		
@@ -58,7 +73,12 @@ func _physics_process(delta: float) -> void:
 			olhar_direita = true
 			olhar_esquerda = false
 			if velocity.y >= 0:
-				$AnimationPlayer.play("walk")
+				if has_sword_bainha:
+					$AnimationPlayer.play("+sword+bainha")
+				if has_just_bainha:
+					$AnimationPlayer.play("-sword+bainha")
+				if !has_just_bainha and !has_sword_bainha:
+					$AnimationPlayer.play("-sword-bainha")
 			direction.x = Input.get_action_strength("ui_right") 
 			#pega a força do botão da direita e armazena direção
 			 
@@ -68,7 +88,12 @@ func _physics_process(delta: float) -> void:
 			olhar_esquerda = true
 			$HumanBase2.flip_h = true
 			if velocity.y >= 0:
-				$AnimationPlayer.play("walk")
+				if has_sword_bainha:
+					$AnimationPlayer.play("+sword+bainha")
+				if has_just_bainha:
+					$AnimationPlayer.play("-sword+bainha")
+				if !has_just_bainha and !has_sword_bainha:
+					$AnimationPlayer.play("-sword-bainha")
 			direction.x =  -Input.get_action_strength("ui_left")
 			
 	#se ele não estiver apertando direita ou esquerda:
@@ -79,10 +104,14 @@ func _physics_process(delta: float) -> void:
 		if can_stand:
 			if is_attacking == false:
 				#se ele não estiver atacando
-				$AnimationPlayer.play("stand_side")
-
+				if has_sword_bainha:
+					$AnimationPlayer.play("stand_side+sword+bainha")
+				if has_just_bainha:
+					$AnimationPlayer.play("stand_side-sword+bainha")
+				if !has_just_bainha and !has_sword_bainha:
+					$AnimationPlayer.play("stand_side-sword-bainha")
 			
-	if Input.is_action_just_pressed("ui_attack") and is_attacking == false:
+	if Input.is_action_just_pressed("ui_attack") and is_attacking == false and has_sword_bainha:
 		#espaço é o botão de ataque
 		
 		#dependendo da onde ele estiver olhando, sua área de ataque mudará
@@ -109,7 +138,34 @@ func _physics_process(delta: float) -> void:
 		#desativa as duas áreas de ataque
 		is_attacking = false
 		#como ele parou de atacar, o "is_attacking" se torna false
+	
+	if Input.is_action_pressed("ui_sword"):
+		can_switch_sword = true
+#
+	if Input.is_action_just_released("ui_sword"):
+		can_switch_sword = false	
 			
+	if has_sword_bainha and can_switch_sword and !Input.is_action_pressed("ui_left") and !Input.is_action_pressed("ui_right"):
+		has_just_bainha = true		
+		has_sword_bainha = false
+		$AnimationPlayer.play("take_in_sword")
+		yield($AnimationPlayer, "animation_finished")					
+		
+	if has_just_bainha and can_switch_sword and !Input.is_action_pressed("ui_left") and !Input.is_action_pressed("ui_right"):
+		has_just_bainha = false
+		has_sword_bainha = true
+		$AnimationPlayer.play("take_out_sword")
+		yield($AnimationPlayer, "animation_finished")
+						
+	if has_sword_bainha:
+		speed = 75
+		
+	if has_just_bainha:
+		speed = 80
+	
+	if !has_just_bainha and !has_sword_bainha:
+		speed = 81
+		
 	velocity.x = speed * direction.x
 	#multiplica a speed pela direção (direção pode ser -1,1 ou 0)
 	
@@ -140,4 +196,8 @@ func calculate_velocity_y(is_jump_interrupted, speed_y, gravity, direction):
 func get_bonus_life(bonus_life):
 	life+=bonus_life
 	emit_signal("life_scale", (float(self.life) / float(self.init_life)))
+	
+func got_sword(boolean):
+	if boolean == true:
+		has_sword_bainha = true
 
