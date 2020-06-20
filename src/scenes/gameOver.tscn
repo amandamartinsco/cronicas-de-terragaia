@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/gameOver.gd" type="Script" id=1]
+[ext_resource path="res://assets/sprites/gameOver.png" type="Texture" id=2]
+[ext_resource path="res://assets/cenário/background_forest-export.png" type="Texture" id=3]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="background" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="themeSong" type="AudioStreamPlayer" parent="."]
+volume_db = -6.0
+autoplay = true
+
+[node name="pressSpace" type="RichTextLabel" parent="."]
+margin_left = 246.393
+margin_top = 487.772
+margin_right = 496.393
+margin_bottom = 541.772
+rect_scale = Vector2( 2.43515, 1.87209 )
+bbcode_enabled = true
+bbcode_text = "
+[wave]Pressione espaço para recomeçar...[wave]"
+text = "
+Pressione espaço para recomeçar..."
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="gameOver" type="TextureRect" parent="."]
+margin_left = 291.552
+margin_top = 59.8055
+margin_right = 727.552
+margin_bottom = 126.805
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

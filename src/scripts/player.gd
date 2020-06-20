@@ -57,6 +57,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		can_stand = false
 		direction.y = -1.0
+		$jump.play()
 		if has_sword_bainha or has_just_bainha:
 			$AnimationPlayer.play("jump")
 		else:
@@ -75,10 +76,16 @@ func _physics_process(delta: float) -> void:
 			if velocity.y >= 0:
 				if has_sword_bainha:
 					$AnimationPlayer.play("+sword+bainha")
+					$equipedFootsteps.play()
 				if has_just_bainha:
 					$AnimationPlayer.play("-sword+bainha")
+					$unequipedFootsteps.play()
 				if !has_just_bainha and !has_sword_bainha:
 					$AnimationPlayer.play("-sword-bainha")
+					$unequipedFootsteps.play()
+			else:
+				$unequipedFootsteps.stop()
+				$equipedFootsteps.stop()
 			direction.x = Input.get_action_strength("ui_right") 
 			#pega a força do botão da direita e armazena direção
 			 
@@ -90,10 +97,16 @@ func _physics_process(delta: float) -> void:
 			if velocity.y >= 0:
 				if has_sword_bainha:
 					$AnimationPlayer.play("+sword+bainha")
+					$equipedFootsteps.play()
 				if has_just_bainha:
 					$AnimationPlayer.play("-sword+bainha")
+					$unequipedFootsteps.play()
 				if !has_just_bainha and !has_sword_bainha:
 					$AnimationPlayer.play("-sword-bainha")
+					$unequipedFootsteps.play()
+			else:
+				$unequipedFootsteps.stop()
+				$equipedFootsteps.stop()
 			direction.x =  -Input.get_action_strength("ui_left")
 			
 	#se ele não estiver apertando direita ou esquerda:
@@ -110,7 +123,7 @@ func _physics_process(delta: float) -> void:
 					$AnimationPlayer.play("stand_side-sword+bainha")
 				if !has_just_bainha and !has_sword_bainha:
 					$AnimationPlayer.play("stand_side-sword-bainha")
-			
+
 	if Input.is_action_just_pressed("ui_attack") and is_attacking == false and has_sword_bainha:
 		#espaço é o botão de ataque
 		
@@ -118,11 +131,12 @@ func _physics_process(delta: float) -> void:
 		if olhar_direita:
 			$attack/esquerda.disabled = true
 			$attack/direita.disabled = false
+			$swordAttack.play()
 		
 		if olhar_esquerda:
 			$attack/esquerda.disabled = false
 			$attack/direita.disabled = true	
-		
+			$swordAttack.play()
 		#como ele apertou o botão de espaço, agora ele está atacando			
 		is_attacking = true
 		
@@ -176,10 +190,15 @@ func _physics_process(delta: float) -> void:
 func _on_damage_area_damage(damage, node) -> void:
 	life -= damage
 	emit_signal("life_scale", (float(self.life) / float(self.init_life)))
+	$damage.play()
+	if life == 0:
+		$death.play()
+		get_tree().change_scene("res://scenes/gameOver.tscn")
 
 func _on_attack_area_entered(area: Area2D) -> void:
 	if area.has_method("hit"):
 		area.hit(damage, self)
+		$swordHit.play()
 		
 func calculate_velocity_y(is_jump_interrupted, speed_y, gravity, direction):
 	var new_velocity_y:int
@@ -200,4 +219,3 @@ func get_bonus_life(bonus_life):
 func got_sword(boolean):
 	if boolean == true:
 		has_sword_bainha = true
-

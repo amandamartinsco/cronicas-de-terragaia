@@ -15,9 +15,12 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Gamejam"
-run/main_scene="res://scenes/enemy.tscn"
-config/icon="res://icon.png"
+config/name="Crônicas de Terragaia"
+run/main_scene="res://scenes/mainMenu.tscn"
+boot_splash/image="res://assets/sprites/loading.png"
+config/icon="res://assets/sprites/hud-sword.png"
+config/macos_native_icon="res://assets/sprites/hud-sword.png"
+config/windows_native_icon="res://assets/sprites/hud-sword.png"
 
 [autoload]
 

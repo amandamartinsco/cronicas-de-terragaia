@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/4-Forest Day.wav-df3d1f03179c00f6ecfa0177ab890e65.sample"
+
+[deps]
+
+source_file="res://assets/musics/4-Forest Day.wav"
+dest_files=[ "res://.import/4-Forest Day.wav-df3d1f03179c00f6ecfa0177ab890e65.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
