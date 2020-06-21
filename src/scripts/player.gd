@@ -4,7 +4,7 @@ extends KinematicBody2D
 
 export var velocity = Vector2(0,70)
 
-export var gravity = 400*11
+export var gravity = 2500
 
 export var speed_y = 140*9
 
