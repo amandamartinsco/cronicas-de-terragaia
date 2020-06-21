@@ -188,13 +188,6 @@ position = Vector2( 2693.16, 113.738 )
 stream = ExtResource( 23 )
 volume_db = -6.0
 
-[node name="potato_enemy5" parent="." instance=ExtResource( 8 )]
-position = Vector2( 734.219, 95.9464 )
-
-[node name="shootSong" type="AudioStreamPlayer2D" parent="potato_enemy5"]
-stream = ExtResource( 23 )
-volume_db = -6.0
-
 [node name="Area2D" parent="." instance=ExtResource( 10 )]
 position = Vector2( 2922.92, 63.8586 )
 cenas = "res://scenes/part_2.tscn"
@@ -215,5 +208,11 @@ position = Vector2( 1491.13, 137.042 )
 
 [node name="skeleton2" parent="." instance=ExtResource( 25 )]
 position = Vector2( 327.772, 88.6919 )
+
+[node name="enemy4" parent="." instance=ExtResource( 24 )]
+position = Vector2( 2557.84, 119.784 )
+
+[node name="enemy5" parent="." instance=ExtResource( 24 )]
+position = Vector2( 2649.5, 39.4227 )
 
 [editable path="player"]
