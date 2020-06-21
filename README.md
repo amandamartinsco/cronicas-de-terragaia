@@ -21,8 +21,9 @@ We'll use the Wiki functionality of GitHub for write the GDD, check it out!
 ## Authors
 
 * **Joao** - *Game Designer*
-* **Amanda** - *Game Developer* - [amandamartinsco](https://github.com/amandamartinsco)
-* **Gino** - *Game Developer* - [ginocarlo01](https://github.com/ginocarlo01)
+* **Amanda** - *Game Developer & UI Designer* - [amandamartinsco](https://github.com/amandamartinsco)
+* **Gino** - *Game Developer & Pixel Artist* - [ginocarlo01](https://github.com/ginocarlo01)
 * **Caio** - *Game Developer* - [Cainhu19](https://github.com/Cainhu19)
+* **Nicholas** - *SFX Producer* - [SoundCloud](https://soundcloud.com/nicholas-buck-piovan)
 * **Leonardo** - *Musician*
 * **Fernando** - *Pixel Artist*

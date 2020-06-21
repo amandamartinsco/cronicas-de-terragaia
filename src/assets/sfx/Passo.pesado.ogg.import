@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Passo.pesado.ogg-ff1ca7cf4b81038eb6a84b596e0a0e5d.oggstr"
+
+[deps]
+
+source_file="res://assets/sfx/Passo.pesado.ogg"
+dest_files=[ "res://.import/Passo.pesado.ogg-ff1ca7cf4b81038eb6a84b596e0a0e5d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

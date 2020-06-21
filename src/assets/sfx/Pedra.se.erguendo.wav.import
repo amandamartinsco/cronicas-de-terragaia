@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Pedra.se.erguendo.wav-b126993b7e9b74dc9fe8ab65b09ed75b.sample"
+
+[deps]
+
+source_file="res://assets/sfx/Pedra.se.erguendo.wav"
+dest_files=[ "res://.import/Pedra.se.erguendo.wav-b126993b7e9b74dc9fe8ab65b09ed75b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -90,6 +90,7 @@ func shoot():
 	can_shoot = false
 	var poison = pre_shoot.instance()
 	poison.global_position = get_node("Position2D").global_position
+	$shootSong.play()
 	if olhar_direita:
 		poison.dir = Vector2(1,0)
 	if olhar_esquerda:
