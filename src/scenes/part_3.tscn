@@ -157,6 +157,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="swordIcon" type="TextureButton" parent="UI"]
+margin_left = 25.0626
+margin_top = 24.42
+margin_right = 65.0626
+margin_bottom = 64.42
+texture_normal = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Area2D" parent="." instance=ExtResource( 10 )]
 position = Vector2( 3623.97, 111.691 )
 cenas = "ato2.tscn"

@@ -41,13 +41,18 @@ var on_floor = false
 
 var pre_apple = preload("res://scenes/apple_blue.tscn")
 
+signal hasSword(t)
+
 func _ready() -> void:
 	if (get_parent().get_filename()) == "res://scenes/enemy.tscn":
 		get_tree().get_nodes_in_group("swords")[0].connect("get_sword", self, "got_sword")
 	else:
 		has_sword_bainha = true
 func _physics_process(delta: float) -> void:
-	
+	if has_just_bainha or has_sword_bainha:
+		emit_signal("hasSword", true)
+	else:
+		emit_signal("hasSword", false)
 #	if has_just_bainha or has_sword_bainha:
 #		get_tree().get_nodes_in_group("swords")[0].disconnect("get_sword", self, "got_sword")		
 	if is_on_floor():
@@ -130,7 +135,7 @@ func _physics_process(delta: float) -> void:
 					$AnimationPlayer.play("stand_side-sword-bainha")
 
 	if Input.is_action_just_pressed("ui_attack") and is_attacking == false and has_sword_bainha:
-		#espaço é o botão de ataque
+		#J é o botão de ataque
 		
 		#dependendo da onde ele estiver olhando, sua área de ataque mudará
 		if olhar_direita:
