@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/gameOver.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/gameOver.png" type="Texture" id=2]
 [ext_resource path="res://assets/cenário/background_forest-export.png" type="Texture" id=3]
 [ext_resource path="res://assets/sprites/restart_pressed.png" type="Texture" id=4]
 [ext_resource path="res://assets/sprites/restart_idle.png" type="Texture" id=5]
+[ext_resource path="res://assets/musics/Game over.wav" type="AudioStream" id=6]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -23,6 +24,7 @@ __meta__ = {
 }
 
 [node name="themeSong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
 volume_db = -6.0
 autoplay = true
 

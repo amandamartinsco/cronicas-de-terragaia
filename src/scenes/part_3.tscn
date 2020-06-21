@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://scenes/pilar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tileset/cenario.tres" type="TileSet" id=2]
@@ -18,12 +18,16 @@
 [ext_resource path="res://assets/sfx/Personagem.morte.wav" type="AudioStream" id=16]
 [ext_resource path="res://assets/sfx/Espada.guardar.wav" type="AudioStream" id=17]
 [ext_resource path="res://assets/sfx/Espada.desenbainhar.wav" type="AudioStream" id=18]
-[ext_resource path="res://assets/musics/3-Sky Grass Night.wav" type="AudioStream" id=19]
+[ext_resource path="res://assets/musics/Boss Fight.wav" type="AudioStream" id=19]
 [ext_resource path="res://assets/sprites/hud.png" type="Texture" id=20]
 [ext_resource path="res://assets/sprites/hud-sword.png" type="Texture" id=21]
 [ext_resource path="res://assets/sfx/Passo.wav" type="AudioStream" id=22]
+[ext_resource path="res://assets/sprites/i_idle.png" type="Texture" id=23]
+[ext_resource path="res://assets/sprites/l_idle.png" type="Texture" id=24]
 [ext_resource path="res://scenes/skeleton.tscn" type="PackedScene" id=25]
 [ext_resource path="res://scenes/enemy_real.tscn" type="PackedScene" id=26]
+[ext_resource path="res://assets/sprites/k_idle.png" type="Texture" id=27]
+[ext_resource path="res://assets/sprites/j_idle.png" type="Texture" id=28]
 
 [node name="enemy" type="Node2D"]
 __meta__ = {
@@ -69,11 +73,11 @@ volume_db = -6.0
 
 [node name="unequipedFootsteps" type="AudioStreamPlayer2D" parent="player"]
 stream = ExtResource( 22 )
-volume_db = -6.0
+volume_db = -80.0
 
 [node name="equipedFootsteps" type="AudioStreamPlayer2D" parent="player"]
 stream = ExtResource( 15 )
-volume_db = -6.0
+volume_db = -80.0
 
 [node name="jump" type="AudioStreamPlayer2D" parent="player"]
 stream = ExtResource( 13 )
@@ -163,6 +167,58 @@ margin_top = 24.42
 margin_right = 65.0626
 margin_bottom = 64.42
 texture_normal = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="attackButton" type="TextureButton" parent="UI"]
+margin_left = 34.9088
+margin_top = 120.151
+margin_right = 172.909
+margin_bottom = 160.151
+rect_scale = Vector2( 0.651779, 0.651779 )
+toggle_mode = true
+button_mask = 0
+texture_normal = ExtResource( 28 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="jumpButton" type="TextureButton" parent="UI"]
+margin_left = 94.9844
+margin_top = 92.5489
+margin_right = 232.984
+margin_bottom = 132.549
+rect_scale = Vector2( 0.631969, 0.631969 )
+toggle_mode = true
+button_mask = 0
+texture_normal = ExtResource( 23 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="takeButton" type="TextureButton" parent="UI"]
+margin_left = 140.447
+margin_top = 122.587
+margin_right = 278.447
+margin_bottom = 162.587
+rect_scale = Vector2( 0.626302, 0.626302 )
+toggle_mode = true
+button_mask = 0
+texture_normal = ExtResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="magicButton" type="TextureButton" parent="UI"]
+margin_left = 97.8917
+margin_top = 156.274
+margin_right = 235.892
+margin_bottom = 196.274
+rect_scale = Vector2( 0.617819, 0.617819 )
+toggle_mode = true
+button_mask = 0
+texture_normal = ExtResource( 27 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

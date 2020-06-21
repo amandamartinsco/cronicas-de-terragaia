@@ -11,7 +11,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if inside == true and Input.is_action_just_pressed("ui_attack"):
+	if inside == true and Input.is_action_just_pressed("ui_accept"):
 		on_get_sword()
 
 func _on_pilar_area_entered(area: Area2D) -> void:
