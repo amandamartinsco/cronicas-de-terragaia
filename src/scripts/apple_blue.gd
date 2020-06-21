@@ -3,8 +3,6 @@ extends KinematicBody2D
 export var velocity = Vector2(0,30)
 export var gravity = 30
 
-#onready var autoload = get_node("/root/power")
-
 var pode_pegar = false #variável pra saber se o player ja pode pegar o item
 
 func _ready():

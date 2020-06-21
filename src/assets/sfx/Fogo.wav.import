@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Fogo.wav-069f7ddc929cfb607dd8cdfc26d35225.sample"
+
+[deps]
+
+source_file="res://assets/sfx/Fogo.wav"
+dest_files=[ "res://.import/Fogo.wav-069f7ddc929cfb607dd8cdfc26d35225.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -272,7 +272,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="Tileset24"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Tileset24/StaticBody2D"]
-polygon = PoolVector2Array( 15.9371, 7.77125, 0.0170517, 15.2788, 0, 16, 15.713, 16.1789 )
+polygon = PoolVector2Array( 15.9371, 7.77125, 0.972458, 15.6178, 0, 16, 15.713, 16.1789 )
 
 [node name="Tileset12" type="Sprite" parent="."]
 position = Vector2( 48, 0 )
@@ -318,7 +318,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="Tileset19"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Tileset19/StaticBody2D"]
-polygon = PoolVector2Array( 15.9962, 15.9866, -0.204216, 16.0906, -0.204216, 7.24279, 15.9858, 15.31 )
+polygon = PoolVector2Array( 15.9962, 15.9866, -0.204216, 16.0906, -0.204216, 7.24279, 16.0116, 15.9946 )
 
 [node name="Tileset13" type="Sprite" parent="."]
 position = Vector2( 48, 48 )

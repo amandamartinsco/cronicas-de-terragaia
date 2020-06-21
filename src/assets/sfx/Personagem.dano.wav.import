@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Personagem.dano.wav-47f09f7d35f74cccac957c9dc44a51be.sample"
+
+[deps]
+
+source_file="res://assets/sfx/Personagem.dano.wav"
+dest_files=[ "res://.import/Personagem.dano.wav-47f09f7d35f74cccac957c9dc44a51be.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

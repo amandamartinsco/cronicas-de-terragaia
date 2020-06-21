@@ -26,6 +26,8 @@ export var life = 100
 
 var pre_shoot = preload("res://scenes/shoot_poison.tscn")
 
+var pre_apple = preload("res://scenes/batata.tscn")
+
 var can_shoot:bool
 
 onready var init_life = life
@@ -81,7 +83,12 @@ func _on_weak_spot_damage(damage, node) -> void:
 		life -= damage
 		emit_signal("life_scale_enemy", (float(self.life) / float(self.init_life)))
 		#escala é mandado pra escala da barra de vidaa
-
+		if life <= 0:
+			spawn_maca()
+			#yield($AnimationPlayer, "animation_finished")
+			emit_signal("pode_dropar", $".".position) 
+			#o sinal é mandado indicando que é possível dropar o item agora
+			queue_free()
 func _on_shoot_timeout() -> void:
 	get_node("subshoot").start()
 	get_node("shoot2").start()
@@ -90,6 +97,7 @@ func shoot():
 	can_shoot = false
 	var poison = pre_shoot.instance()
 	poison.global_position = get_node("Position2D").global_position
+	$shootSong.play()
 	if olhar_direita:
 		poison.dir = Vector2(1,0)
 	if olhar_esquerda:
@@ -101,3 +109,10 @@ func _on_subshoot_timeout() -> void:
 
 func _on_shoot2_timeout() -> void:
 	shoot()
+	
+func spawn_maca():
+	var maca = pre_apple.instance()
+	maca.global_position = self.global_position - Vector2(0,20)
+	get_parent().add_child(maca)	
+	#é pra usar call_deferred mas se usar não colisão entre a maçã e o personagem		
+
