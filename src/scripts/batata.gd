@@ -7,8 +7,8 @@ var pode_pegar = false #variável pra saber se o player ja pode pegar o item
 
 func _ready():
 #	$Sprite.visible = false #O item está invisível
-	for i in len(get_tree().get_nodes_in_group("enemy")):
-		get_tree().get_nodes_in_group("enemy")[i].connect("pode_dropar", self, "dropar")
+	for i in len(get_tree().get_nodes_in_group("potato_enemy")):
+		get_tree().get_nodes_in_group("potato_enemy")[i].connect("pode_dropar", self, "dropar")
 	#conecta o sinal pode_dropar de quando o inimigo morre com a função dropar
 
 func dropar(pd):
