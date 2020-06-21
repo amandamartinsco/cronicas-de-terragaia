@@ -160,6 +160,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TextureButton" type="TextureButton" parent="UI"]
+margin_left = 26.3171
+margin_top = 23.0275
+margin_right = 66.3171
+margin_bottom = 63.0275
+texture_normal = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="potato_enemy2" parent="." instance=ExtResource( 8 )]
 position = Vector2( 1905.31, 115.052 )
 
