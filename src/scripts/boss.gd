@@ -6,7 +6,7 @@ export var life = 200
 onready var init_life = life
 #guarda a vida inicial
 
-signal life_scale_boss(sc)
+signal life_scale_enemy(sc)
 
 var positions_x = [-35.0, -45.0, -65.0, -75.0, 35.0, 45.0, 65.0, 75.0]
 
@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 		
 func _on_weak_spots_damage(damage, node) -> void:
 		life -= damage
-#		emit_signal("life_scale_boss", (float(self.life) / float(self.init_life)))
+		emit_signal("life_scale_enemy", (float(self.life) / float(self.init_life)))
 
 func _on_sensor_weak_area_entered(area: Area2D) -> void:
 	position += Vector2(50,0)
