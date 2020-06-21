@@ -45,6 +45,9 @@ func _ready() -> void:
 	get_tree().get_nodes_in_group("swords")[0].connect("get_sword", self, "got_sword")
 
 func _physics_process(delta: float) -> void:
+	
+#	if has_just_bainha or has_sword_bainha:
+#		get_tree().get_nodes_in_group("swords")[0].disconnect("get_sword", self, "got_sword")		
 	if is_on_floor():
 		on_floor = true
 	else:

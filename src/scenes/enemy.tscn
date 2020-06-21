@@ -44,7 +44,7 @@ tile_data = PoolIntArray( 0, 14, 0, 1, 14, 0, 2, 14, 0, 3, 14, 0, 4, 14, 0, 5, 1
 [node name="player" parent="." groups=[
 "player",
 ] instance=ExtResource( 3 )]
-position = Vector2( 347.222, -3.94754 )
+position = Vector2( 307.605, -4.90125 )
 
 [node name="HumanBase2" parent="player" index="0"]
 frame = 16
@@ -197,7 +197,7 @@ volume_db = -6.0
 
 [node name="Area2D" parent="." instance=ExtResource( 10 )]
 position = Vector2( 2922.92, 63.8586 )
-cenas = "ato2.tscn"
+cenas = "res://scenes/part_2.tscn"
 
 [node name="themeSong" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 19 )
