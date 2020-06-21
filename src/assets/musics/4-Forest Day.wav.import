@@ -2,13 +2,11 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/4-Forest Day.wav-df3d1f03179c00f6ecfa0177ab890e65.sample"
+valid=false
 
 [deps]
 
 source_file="res://assets/musics/4-Forest Day.wav"
-dest_files=[ "res://.import/4-Forest Day.wav-df3d1f03179c00f6ecfa0177ab890e65.sample" ]
-
 [params]
 
 force/8_bit=false

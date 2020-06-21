@@ -2,13 +2,11 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/5-Forest Night.wav-bd868a74a8619cedd3267fe8fa3d89ab.sample"
+valid=false
 
 [deps]
 
 source_file="res://assets/musics/5-Forest Night.wav"
-dest_files=[ "res://.import/5-Forest Night.wav-bd868a74a8619cedd3267fe8fa3d89ab.sample" ]
-
 [params]
 
 force/8_bit=false
