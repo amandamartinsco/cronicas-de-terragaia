@@ -75,7 +75,7 @@ length = 0.4
 script = ExtResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 4
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 13.5847, -9.43384 )
@@ -119,3 +119,4 @@ anims/burning2 = SubResource( 3 )
 anims/burning3 = SubResource( 4 )
 anims/burning4 = SubResource( 5 )
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

@@ -42,8 +42,10 @@ var on_floor = false
 var pre_apple = preload("res://scenes/apple_blue.tscn")
 
 func _ready() -> void:
-	get_tree().get_nodes_in_group("swords")[0].connect("get_sword", self, "got_sword")
-
+	if (get_parent().get_filename()) == "res://scenes/enemy.tscn":
+		get_tree().get_nodes_in_group("swords")[0].connect("get_sword", self, "got_sword")
+	else:
+		has_sword_bainha = true
 func _physics_process(delta: float) -> void:
 	
 #	if has_just_bainha or has_sword_bainha:
@@ -67,13 +69,6 @@ func _physics_process(delta: float) -> void:
 		if on_floor:
 			velocity.y = jump_power
 			on_floor = false
-#		if has_sword_bainha or has_just_bainha:
-#			$AnimationPlayer.play("fall")
-#		else:
-#			$AnimationPlayer.play("fall-sword")
-#
-#		yield($AnimationPlayer, "animation_finished")
-#		can_stand = true
 		
 	if Input.is_action_pressed("ui_right"):
 		#se o botão da direita estiver apertado

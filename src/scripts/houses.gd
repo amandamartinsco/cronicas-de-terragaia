@@ -17,3 +17,7 @@ func _ready() -> void:
 
 func _on_Area2D_area_entered(area: Area2D) -> void:
 	$AnimationPlayer.play("burning")
+
+
+func _on_Area2D_body_entered(body: Node) -> void:
+	$AnimationPlayer.play("burning")

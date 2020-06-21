@@ -1,0 +1,189 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://scenes/pilar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/tileset/cenario.tres" type="TileSet" id=2]
+[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/barradevida.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Background_part_2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/power_hp.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/batata.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/boss.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/dialog.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/passagem_de_cena.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/sfx/Espada.golpe.acerto.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/sfx/Personagem.dano.wav" type="AudioStream" id=12]
+[ext_resource path="res://assets/sfx/Personagem.pulo.wav" type="AudioStream" id=13]
+[ext_resource path="res://assets/sfx/Espada.golpe.wav" type="AudioStream" id=14]
+[ext_resource path="res://assets/sfx/Passo.pesado.wav" type="AudioStream" id=15]
+[ext_resource path="res://assets/sfx/Personagem.morte.wav" type="AudioStream" id=16]
+[ext_resource path="res://assets/sfx/Espada.guardar.wav" type="AudioStream" id=17]
+[ext_resource path="res://assets/sfx/Espada.desenbainhar.wav" type="AudioStream" id=18]
+[ext_resource path="res://assets/musics/3-Sky Grass Night.wav" type="AudioStream" id=19]
+[ext_resource path="res://assets/sprites/hud.png" type="Texture" id=20]
+[ext_resource path="res://assets/sprites/hud-sword.png" type="Texture" id=21]
+[ext_resource path="res://assets/sfx/Passo.wav" type="AudioStream" id=22]
+[ext_resource path="res://scenes/skeleton.tscn" type="PackedScene" id=25]
+[ext_resource path="res://scenes/enemy_real.tscn" type="PackedScene" id=26]
+
+[node name="enemy" type="Node2D"]
+__meta__ = {
+"_edit_horizontal_guides_": [ 132.873 ],
+"_edit_vertical_guides_": [ 308.279, 307.85 ]
+}
+
+[node name="enemy" parent="." instance=ExtResource( 26 )]
+position = Vector2( 2498.61, 73.7421 )
+
+[node name="TileMap" type="TileMap" parent="."]
+rotation = -0.000232642
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+collision_layer = 0
+collision_mask = 3
+format = 1
+tile_data = PoolIntArray( 0, 10, 0, 72, 10, 0, 65536, 10, 0, 65608, 10, 0, 131072, 10, 0, 131144, 10, 0, 196608, 10, 0, 196680, 10, 0, 262144, 10, 0, 262216, 10, 0, 327680, 10, 0, 327752, 10, 0, 393216, 10, 0, 393288, 10, 0, 458752, 10, 0, 458824, 10, 0, 524288, 10, 0, 524360, 10, 0, 589824, 6, 0, 589825, 22, 0, 589826, 22, 0, 589827, 22, 0, 589828, 22, 0, 589829, 22, 0, 589830, 22, 0, 589831, 22, 0, 589832, 22, 0, 589833, 22, 0, 589834, 22, 0, 589835, 22, 0, 589836, 22, 0, 589837, 22, 0, 589838, 22, 0, 589839, 22, 0, 589840, 22, 0, 589841, 22, 0, 589842, 22, 0, 589843, 22, 0, 589844, 22, 0, 589845, 22, 0, 589846, 22, 0, 589847, 22, 0, 589848, 22, 0, 589849, 22, 0, 589850, 22, 0, 589851, 22, 0, 589852, 22, 0, 589853, 22, 0, 589854, 22, 0, 589855, 22, 0, 589856, 22, 0, 589857, 22, 0, 589858, 22, 0, 589859, 22, 0, 589860, 22, 0, 589861, 22, 0, 589862, 22, 0, 589863, 22, 0, 589864, 22, 0, 589865, 22, 0, 589866, 22, 0, 589867, 22, 0, 589868, 22, 0, 589869, 22, 0, 589870, 22, 0, 589871, 22, 0, 589872, 22, 0, 589873, 22, 0, 589874, 22, 0, 589875, 22, 0, 589876, 22, 0, 589877, 22, 0, 589878, 22, 0, 589879, 22, 0, 589880, 22, 0, 589881, 22, 0, 589882, 22, 0, 589883, 22, 0, 589884, 22, 0, 589885, 22, 0, 589886, 22, 0, 589887, 22, 0, 589888, 22, 0, 589889, 22, 0, 589890, 22, 0, 589891, 22, 0, 589892, 22, 0, 589893, 22, 0, 589894, 22, 0, 589895, 22, 0, 589896, 8, 0 )
+
+[node name="player" parent="." groups=[
+"player",
+] instance=ExtResource( 3 )]
+position = Vector2( 43.2893, 27.2272 )
+
+[node name="HumanBase2" parent="player" index="0"]
+frame = 16
+
+[node name="swordHit" type="AudioStreamPlayer2D" parent="player"]
+stream = ExtResource( 11 )
+volume_db = -6.0
+
+[node name="swordEquip" type="AudioStreamPlayer2D" parent="player"]
+stream = ExtResource( 18 )
+volume_db = -6.0
+
+[node name="swordUnequip" type="AudioStreamPlayer2D" parent="player"]
+stream = ExtResource( 17 )
+volume_db = -6.0
+
+[node name="swordAttack" type="AudioStreamPlayer2D" parent="player"]
+stream = ExtResource( 14 )
+volume_db = -6.0
+
+[node name="unequipedFootsteps" type="AudioStreamPlayer2D" parent="player"]
+stream = ExtResource( 22 )
+volume_db = -6.0
+
+[node name="equipedFootsteps" type="AudioStreamPlayer2D" parent="player"]
+stream = ExtResource( 15 )
+volume_db = -6.0
+
+[node name="jump" type="AudioStreamPlayer2D" parent="player"]
+stream = ExtResource( 13 )
+volume_db = -6.0
+
+[node name="death" type="AudioStreamPlayer2D" parent="player"]
+stream = ExtResource( 16 )
+volume_db = -6.0
+
+[node name="damage" type="AudioStreamPlayer2D" parent="player"]
+position = Vector2( 0, -2.38419e-07 )
+stream = ExtResource( 12 )
+volume_db = -6.0
+
+[node name="enemies" type="Node2D" parent="."]
+
+[node name="KinematicBody2D" parent="enemies" instance=ExtResource( 7 )]
+position = Vector2( 85.2458, 9.72915 )
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="backgroundLife" type="ColorRect" parent="UI"]
+margin_left = 71.0
+margin_top = 33.0
+margin_right = 236.0
+margin_bottom = 47.0
+color = Color( 0.72549, 1, 0.745098, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="backgroundMana" type="ColorRect" parent="UI"]
+margin_left = 81.0
+margin_top = 47.0
+margin_right = 196.0
+margin_bottom = 62.0
+color = Color( 0.72549, 1, 0.745098, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" parent="UI" instance=ExtResource( 4 )]
+margin_left = 71.0
+margin_top = 33.0
+margin_right = 236.0
+margin_bottom = 47.0
+
+[node name="power" parent="UI" instance=ExtResource( 6 )]
+margin_left = 81.0
+margin_top = 48.0
+margin_right = 196.0
+margin_bottom = 62.0
+color = Color( 0.0901961, 0.0862745, 0.843137, 0 )
+
+[node name="DialogBox" parent="UI" instance=ExtResource( 9 )]
+margin_left = -0.0104981
+margin_top = -4.20646
+margin_right = -0.010376
+margin_bottom = -4.20648
+
+[node name="hud" type="TextureRect" parent="UI"]
+margin_left = 11.6488
+margin_top = 11.2254
+margin_right = 111.649
+margin_bottom = 51.2254
+rect_scale = Vector2( 2.34031, 2.34031 )
+texture = ExtResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hudSword" type="TextureRect" parent="UI"]
+visible = false
+margin_left = 22.2549
+margin_top = 19.9724
+margin_right = 62.2549
+margin_bottom = 59.9724
+rect_scale = Vector2( 1.18367, 1.24191 )
+texture = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Area2D" parent="." instance=ExtResource( 10 )]
+position = Vector2( 3623.97, 111.691 )
+cenas = "ato2.tscn"
+
+[node name="themeSong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 19 )
+volume_db = -12.0
+autoplay = true
+
+[node name="enemy2" parent="." instance=ExtResource( 26 )]
+position = Vector2( 2730.85, 71.7577 )
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 5 )]
+
+[node name="pilar" parent="." instance=ExtResource( 1 )]
+visible = false
+
+[node name="skeleton3" parent="." instance=ExtResource( 25 )]
+position = Vector2( 2539.96, 121.325 )
+
+[node name="skeleton4" parent="." instance=ExtResource( 25 )]
+position = Vector2( 2809.18, 120.467 )
+
+[node name="enemy3" parent="." instance=ExtResource( 26 )]
+position = Vector2( 3207.27, 87.7477 )
+
+[node name="boss" parent="." instance=ExtResource( 8 )]
+position = Vector2( 370.864, 92.8131 )
+
+[editable path="player"]

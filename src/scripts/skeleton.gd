@@ -53,16 +53,10 @@ func _physics_process(delta: float) -> void:
 		olhar_esquerda = true
 		
 	if olhar_direita:
-		$Sprite.flip_h = true 
-		$Sprite.position.x = +20
-#		$esquerda1.disabled = true	
-#		$direita1.disabled = false	
+		$AnimationPlayer.play("walk_right")
 #
 	if olhar_esquerda:
-		$Sprite.flip_h = false
-		$Sprite.position.x = -20	
-#		$direita1.disabled = true
-#		$esquerda1.disabled = false		
+		$AnimationPlayer.play("walk_left")
 #
 	$AnimationPlayer.play("walk")	
 					

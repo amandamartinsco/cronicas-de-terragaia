@@ -8,6 +8,8 @@ onready var init_life = life
 
 signal life_scale_boss(sc)
 
+var positions_x = [-35.0, -45.0, -65.0, -75.0, 35.0, 45.0, 65.0, 75.0]
+
 var pre_rock = preload("res://scenes/rock.tscn")
 
 var bodies = []
@@ -22,7 +24,15 @@ func _process(delta: float) -> void:
 		if $shoot_timer.is_stopped():
 			$shoot_timer.start()
 	$AnimationPlayer.play("stand")
-
+	
+	if Input.is_action_just_pressed("ui_page_up"):
+		$Sprite2.visible = true
+		$Sprite3.visible = true		
+		
+	if Input.is_action_just_pressed("ui_page_down"):
+		$Sprite2.visible = false
+		$Sprite3.visible = false	
+		
 func _on_weak_spots_damage(damage, node) -> void:
 		life -= damage
 #		emit_signal("life_scale_boss", (float(self.life) / float(self.init_life)))
@@ -40,9 +50,10 @@ func _on_shoot_timer_timeout() -> void:
 func fire():
 	if bodies.size() > 0:
 		var rock = pre_rock.instance()
-		add_child(rock)
-		rock.rotation = rotation
-		rock.global_position = $Position2D.global_position
-		rock.target = bodies[0]
+		#ock.dir = Vector2(0,1)
+		var choose = rand_range(0, 8)
+		choose = int(choose)		
+		rock.global_position = global_position + Vector2(positions_x[choose], 0)
+		get_parent().add_child(rock)
 	else:
 		$shoot_timer.stop()

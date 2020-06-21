@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/sprites/hood-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://scripts/boss.gd" type="Script" id=2]
 [ext_resource path="res://scripts/weak_spot.gd" type="Script" id=3]
+[ext_resource path="res://assets/sprites/blood.png" type="Texture" id=4]
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=1]
 resource_name = "fade"
 length = 0.3
 tracks/0/type = "value"
@@ -44,7 +45,7 @@ tracks/2/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 resource_name = "stand"
 length = 0.8
 loop = true
@@ -61,15 +62,15 @@ tracks/0/keys = {
 "values": [ 8, 9, 10, 11, 12, 13, 14, 15 ]
 }
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=3]
 radius = 14.8945
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=4]
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=5]
 radius = 25.9507
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 123.794, 100.771 )
 
 [node name="boss" type="KinematicBody2D"]
@@ -83,52 +84,52 @@ hframes = 8
 frame = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/fade = SubResource( 6 )
-anims/stand = SubResource( 5 )
+anims/fade = SubResource( 1 )
+anims/stand = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="weak_spots" type="Area2D" parent="."]
-visible = false
 collision_layer = 2
 script = ExtResource( 3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="weak_spots"]
-position = Vector2( -60.4988, -41.5027 )
-shape = SubResource( 2 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="weak_spots"]
-position = Vector2( 65.6228, -47.1066 )
-shape = SubResource( 2 )
-
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="weak_spots"]
 position = Vector2( 64.8284, 39.8833 )
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="weak_spots"]
 position = Vector2( -66.6496, 41.4721 )
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 
 [node name="sensor_weak" type="Area2D" parent="."]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sensor_weak"]
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 
 [node name="sensor_attack" type="Area2D" parent="."]
 visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sensor_attack"]
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 
 [node name="shoot_timer" type="Timer" parent="."]
-wait_time = 3.0
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( -35.1221, 0 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( -67.6185, 40.4417 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 4 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+position = Vector2( 64.0596, 38.824 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 4 )
 [connection signal="damage" from="weak_spots" to="." method="_on_weak_spots_damage"]
 [connection signal="area_entered" from="sensor_weak" to="." method="_on_sensor_weak_area_entered"]
 [connection signal="body_entered" from="sensor_attack" to="." method="_on_sensor_attack_body_entered"]
