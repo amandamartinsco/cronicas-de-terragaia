@@ -55,15 +55,15 @@ func _physics_process(delta: float) -> void:
 	if olhar_direita:
 		$Sprite.flip_h = true 
 		$Sprite.position.x = +20
-		$esquerda1.disabled = true	
-		$direita1.disabled = false	
-		
+#		$esquerda1.disabled = true	
+#		$direita1.disabled = false	
+#
 	if olhar_esquerda:
 		$Sprite.flip_h = false
 		$Sprite.position.x = -20	
-		$direita1.disabled = true
-		$esquerda1.disabled = false		
-					
+#		$direita1.disabled = true
+#		$esquerda1.disabled = false		
+#
 	$AnimationPlayer.play("walk")	
 					
 	move_and_slide(velocity, UP)
@@ -80,4 +80,8 @@ func _on_weak_spot_damage(damage, node) -> void:
 		life -= damage
 		emit_signal("life_scale_skeleton", (float(self.life) / float(self.init_life)))
 		#escala é mandado pra escala da barra de vida
-
+		if life <= 0:
+			#yield($AnimationPlayer, "animation_finished")
+			emit_signal("pode_dropar", $".".position) 
+			#o sinal é mandado indicando que é possível dropar o item agora
+			queue_free()

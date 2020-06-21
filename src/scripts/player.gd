@@ -4,9 +4,9 @@ extends KinematicBody2D
 
 export var velocity = Vector2(0,70)
 
-export var gravity = 400*11
+export var gravity = 15
 
-export var speed_y = 140*9
+export var jump_power = -200
 
 const UP = Vector2(0, -1)
 
@@ -37,33 +37,40 @@ var has_just_bainha = false
 
 var can_switch_sword = true
 
-var t
+var on_floor = false
+
+var pre_apple = preload("res://scenes/apple_blue.tscn")
 
 func _ready() -> void:
 	get_tree().get_nodes_in_group("swords")[0].connect("get_sword", self, "got_sword")
 
 func _physics_process(delta: float) -> void:
-	var is_jump_interrupted = Input.is_action_just_released("jump") and velocity.y < 0
-		
-	if Input.is_action_just_released("jump"):
-		if has_sword_bainha or has_just_bainha:
-			$AnimationPlayer.play("fall")
-		else:
-			$AnimationPlayer.play("fall-sword")
-			
-		yield($AnimationPlayer, "animation_finished")
-		can_stand = true
-	
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		can_stand = false
-		direction.y = -1.0
-		$jump.play()
-		if has_sword_bainha or has_just_bainha:
-			$AnimationPlayer.play("jump")
-		else:
-			$AnimationPlayer.play("jump-sword")
+	if is_on_floor():
+		on_floor = true
 	else:
-		direction.y = 0.0
+		on_floor = false
+		if !has_just_bainha and !has_sword_bainha:
+			if velocity.y < 0:
+				$AnimationPlayer.play("jump-sword")
+			else:
+				$AnimationPlayer.play("fall-sword")
+		if has_just_bainha or has_sword_bainha:
+			if velocity.y < 0:
+				$AnimationPlayer.play("jump")
+			else:
+				$AnimationPlayer.play("fall")
+		
+	if Input.is_action_pressed("jump"):
+		if on_floor:
+			velocity.y = jump_power
+			on_floor = false
+#		if has_sword_bainha or has_just_bainha:
+#			$AnimationPlayer.play("fall")
+#		else:
+#			$AnimationPlayer.play("fall-sword")
+#
+#		yield($AnimationPlayer, "animation_finished")
+#		can_stand = true
 		
 	if Input.is_action_pressed("ui_right"):
 		#se o botão da direita estiver apertado
@@ -183,9 +190,9 @@ func _physics_process(delta: float) -> void:
 	velocity.x = speed * direction.x
 	#multiplica a speed pela direção (direção pode ser -1,1 ou 0)
 	
-	velocity.y = calculate_velocity_y(is_jump_interrupted, speed_y, gravity, direction)
+	velocity.y += gravity
 		
-	move_and_slide(velocity, UP)
+	velocity = move_and_slide(velocity, UP)
 
 func _on_damage_area_damage(damage, node) -> void:
 	life -= damage

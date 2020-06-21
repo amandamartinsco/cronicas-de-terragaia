@@ -1,10 +1,10 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://scenes/enemy_real.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tileset/cenario.tres" type="TileSet" id=2]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/barradevida.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/ParallaxBackground.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Background_part_2.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/power_hp.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/batata.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/potato_enemy.tscn" type="PackedScene" id=8]
@@ -24,6 +24,7 @@
 [ext_resource path="res://assets/sfx/Passo.wav" type="AudioStream" id=22]
 [ext_resource path="res://assets/sfx/Tirobatata.wav" type="AudioStream" id=23]
 [ext_resource path="res://scenes/houses.tscn" type="PackedScene" id=24]
+[ext_resource path="res://scenes/skeleton.tscn" type="PackedScene" id=25]
 
 [node name="enemy" type="Node2D"]
 __meta__ = {
@@ -103,8 +104,6 @@ position = Vector2( 0, -2.38419e-07 )
 stream = ExtResource( 12 )
 volume_db = -6.0
 
-[node name="ParallaxBackground2" parent="." instance=ExtResource( 5 )]
-
 [node name="enemies" type="Node2D" parent="."]
 
 [node name="KinematicBody2D" parent="enemies" instance=ExtResource( 7 )]
@@ -182,15 +181,33 @@ stream = ExtResource( 23 )
 volume_db = -6.0
 
 [node name="potato_enemy3" parent="." instance=ExtResource( 8 )]
-position = Vector2( 2070.83, 99.6939 )
+position = Vector2( 1838.28, 114.359 )
 
 [node name="shootSong" type="AudioStreamPlayer2D" parent="potato_enemy3"]
 stream = ExtResource( 23 )
 volume_db = -6.0
 
+[node name="skeleton" parent="potato_enemy3" instance=ExtResource( 25 )]
+position = Vector2( 328.902, -26.4015 )
+
+[node name="skeleton2" parent="potato_enemy3" instance=ExtResource( 25 )]
+position = Vector2( 701.682, 6.96568 )
+
+[node name="skeleton3" parent="potato_enemy3" instance=ExtResource( 25 )]
+position = Vector2( 970.898, 6.10831 )
+
+[node name="enemy" parent="potato_enemy3" instance=ExtResource( 1 )]
+position = Vector2( 1368.99, -26.6113 )
+
 [node name="Area2D" parent="." instance=ExtResource( 10 )]
 position = Vector2( 3623.97, 111.691 )
 cenas = "ato2.tscn"
+
+[node name="skeleton" parent="Area2D" instance=ExtResource( 25 )]
+position = Vector2( -2273.62, 8.84436 )
+
+[node name="skeleton" parent="Area2D/skeleton" instance=ExtResource( 25 )]
+position = Vector2( 278.731, -16.9129 )
 
 [node name="themeSong" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 19 )
@@ -199,5 +216,7 @@ autoplay = true
 
 [node name="enemy2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 2730.85, 71.7577 )
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 5 )]
 
 [editable path="player"]
