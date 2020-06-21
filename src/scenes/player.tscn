@@ -237,7 +237,7 @@ polygon = PoolVector2Array( 8.27789, -0.0501328, 7.84778, -13.1562, -5.92134, -1
 position = Vector2( 138.895, 105.457 )
 current = true
 zoom = Vector2( 0.2, 0.2 )
-limit_bottom = 132
+limit_bottom = 150
 limit_smoothed = true
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
