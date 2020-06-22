@@ -133,8 +133,8 @@ func _physics_process(delta: float) -> void:
 					$AnimationPlayer.play("stand_side-sword+bainha")
 				if !has_just_bainha and !has_sword_bainha:
 					$AnimationPlayer.play("stand_side-sword-bainha")
-
-	if Input.is_action_just_pressed("ui_attack") and is_attacking == false and has_sword_bainha:
+					
+	if Input.is_action_just_pressed("ui_attack") and is_attacking == false and has_sword_bainha and on_floor:
 		#J é o botão de ataque
 		
 		#dependendo da onde ele estiver olhando, sua área de ataque mudará

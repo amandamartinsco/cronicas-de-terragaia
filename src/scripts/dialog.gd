@@ -10,7 +10,7 @@ func _ready():
 
 func _process(delta):
 	$"TextureRect/next-indicator".visible = finished
-	if Input.is_action_just_pressed("ui_accept") and finished == true:
+	if Input.is_action_just_pressed("ui_enter") and finished == true:
 		load_dialog()
 
 func load_dialog():
