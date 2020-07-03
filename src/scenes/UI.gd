@@ -20,7 +20,7 @@ func _ready():
 	else:
 		$magicButton.set_pressed(false)
 
-func _on_has_sword(t):
+func on_has_sword(t):
 	#Ele irá checar se espada já está equipada para mostrar na HUD
 		if t == true:
 			$swordIcon.set_pressed(true)

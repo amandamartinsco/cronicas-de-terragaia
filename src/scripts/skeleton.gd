@@ -83,7 +83,6 @@ func _on_weak_spot_damage(damage, node) -> void:
 
 func _on_attack_timeout() -> void:
 	if !is_attacking:
-		print("atacando")
 		attack()
 	
 func attack():

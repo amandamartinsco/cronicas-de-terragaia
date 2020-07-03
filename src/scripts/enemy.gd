@@ -31,6 +31,8 @@ var live = false
 
 var pre_apple = preload("res://scenes/apple_blue.tscn")
 
+var atacando:bool
+
 func _ready() -> void:
 	velocity.x = - velocity.x
 	#começa andando pra esqueda
@@ -48,43 +50,46 @@ func _physics_process(delta: float) -> void:
 	#a velocidade no eixo y é equivalente à gravidade
 	
 	if is_on_wall():
-		#se ele detectar uma parede
-		velocity.x = velocity.x * -1
-		#velocidade é invertida no eixo x
-		$"RayCast2D".cast_to.x *= -1
-		#também inverte a direção do RayCast
+		if !atacando:
+			#se ele detectar uma parede
+			velocity.x = velocity.x * -1
+			#velocidade é invertida no eixo x
+			$"RayCast2D".cast_to.x *= -1
+			#também inverte a direção do RayCast
 		
 	if $"RayCast2D".is_colliding():
-		#se estiver colidindo
-		
-		#analisa para qual direção o personagem está olhando e assim define sua nova velocidade
-		if velocity.x < 0:
-			velocity.x = -30
-			$BaseArmoredDemo.flip_h = false
+		if !atacando:
+			#se estiver colidindo
 			
-		if velocity.x >= 0:
-			velocity.x = 30		
-			$BaseArmoredDemo.flip_h = true
-			
-		$AnimationPlayer.play("run")
+			#analisa para qual direção o personagem está olhando e assim define sua nova velocidade
+			if velocity.x < 0:
+				velocity.x = -30
+				$BaseArmoredDemo.flip_h = false
+				
+			if velocity.x >= 0:
+				velocity.x = 30		
+				$BaseArmoredDemo.flip_h = true
+				
+			$AnimationPlayer.play("run")
 				
 	else:
-		#se o RayCast não estiver colidindo
-		
-		$attack/direita.disabled = true
-		$attack/esquerda.disabled = true	
-		#desativa as áreas de ataques tanto da esquerda quanto da direita
-		
-		#diminui a velocidade pela metade e roda a animação de andar ao invés de rodar a de correr
+		if !atacando:
+			#se o RayCast não estiver colidindo
 			
-		if velocity.x < 0:
-			velocity.x = -15
-			$BaseArmoredDemo.flip_h = false
+			$attack/direita.disabled = true
+			$attack/esquerda.disabled = true	
+			#desativa as áreas de ataques tanto da esquerda quanto da direita
 			
-		if velocity.x >= 0:
-			velocity.x = 15		
-			$BaseArmoredDemo.flip_h = true
-		$AnimationPlayer.play("walk")	
+			#diminui a velocidade pela metade e roda a animação de andar ao invés de rodar a de correr
+				
+			if velocity.x < 0:
+				velocity.x = -15
+				$BaseArmoredDemo.flip_h = false
+				
+			if velocity.x >= 0:
+				velocity.x = 15		
+				$BaseArmoredDemo.flip_h = true
+			$AnimationPlayer.play("walk")	
 		
 	#analisa qual para qual direção está, e dependendo disso define para onde o inimigo está olhando
 	if velocity.x >= 0:
@@ -116,6 +121,8 @@ func _on_VisibilityNotifier2D_screen_exited() -> void:
 
 #se a área de ataque encontrar outra área que tem o método hit, ela manda o damage pra ela
 func _on_attack_area_entered(area: Area2D) -> void:
+	atacando = true
+	attack()
 	if area.has_method("hit"):
 		area.hit(damage, self)
 
@@ -139,3 +146,19 @@ func spawn_maca():
 	maca.global_position = self.global_position - Vector2(0,20)
 	get_parent().add_child(maca)	
 	#é pra usar call_deferred mas se usar não colisão entre a maçã e o personagem		
+	
+func attack():
+	var t = get_tree().create_timer(1.3)
+	velocity.x *= -1
+	if velocity.x < 0:
+		velocity.x = -15
+	if velocity.x >= 0:
+		velocity.x = 15
+	$AnimationPlayer.play("walk")
+	yield(t, "timeout")
+	velocity.x *= -1
+	if velocity.x < 0:
+		velocity.x = -30
+	if velocity.x >= 0:
+		velocity.x = 30	
+	$AnimationPlayer.play("run")

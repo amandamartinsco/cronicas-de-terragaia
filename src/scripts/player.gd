@@ -31,11 +31,11 @@ export var speed = 75
 
 var can_stand:bool
 
-var has_sword_bainha = false
+var has_sword_bainha = true
 
-var has_just_bainha = false
+#var has_just_bainha = false
 
-var can_switch_sword = true
+#var can_switch_sword = true
 
 var on_floor = false
 
@@ -43,28 +43,32 @@ var pre_apple = preload("res://scenes/apple_blue.tscn")
 
 signal hasSword(t)
 
+var furious:bool
+
 func _ready() -> void:
-	if (get_parent().get_filename()) == "res://scenes/enemy.tscn":
-		get_tree().get_nodes_in_group("swords")[0].connect("get_sword", self, "got_sword")
-	else:
-		has_sword_bainha = true
-func _physics_process(delta: float) -> void:
-	if has_just_bainha or has_sword_bainha:
+#	if (get_parent().get_filename()) == "res://scenes/enemy.tscn":
+#		get_tree().get_nodes_in_group("swords")[0].connect("get_sword", self, "got_sword")
+#	else:
+#		has_sword_bainha = true
+	if has_sword_bainha:
 		emit_signal("hasSword", true)
 	else:
 		emit_signal("hasSword", false)
+	pass
+	
+func _physics_process(delta: float) -> void:
 #	if has_just_bainha or has_sword_bainha:
 #		get_tree().get_nodes_in_group("swords")[0].disconnect("get_sword", self, "got_sword")		
 	if is_on_floor():
 		on_floor = true
 	else:
 		on_floor = false
-		if !has_just_bainha and !has_sword_bainha:
-			if velocity.y < 0:
-				$AnimationPlayer.play("jump-sword")
-			else:
-				$AnimationPlayer.play("fall-sword")
-		if has_just_bainha or has_sword_bainha:
+#		if !has_just_bainha and !has_sword_bainha:
+#			if velocity.y < 0:
+#				$AnimationPlayer.play("jump-sword")
+#			else:
+#				$AnimationPlayer.play("fall-sword")
+		if has_sword_bainha:
 			if velocity.y < 0:
 				$AnimationPlayer.play("jump")
 			else:
@@ -87,12 +91,12 @@ func _physics_process(delta: float) -> void:
 				if has_sword_bainha:
 					$AnimationPlayer.play("+sword+bainha")
 					$equipedFootsteps.play()
-				if has_just_bainha:
-					$AnimationPlayer.play("-sword+bainha")
-					$unequipedFootsteps.play()
-				if !has_just_bainha and !has_sword_bainha:
-					$AnimationPlayer.play("-sword-bainha")
-					$unequipedFootsteps.play()
+#				if has_just_bainha:
+#					$AnimationPlayer.play("-sword+bainha")
+#					$unequipedFootsteps.play()
+#				if !has_just_bainha and !has_sword_bainha:
+#					$AnimationPlayer.play("-sword-bainha")
+#					$unequipedFootsteps.play()
 			else:
 				$unequipedFootsteps.stop()
 				$equipedFootsteps.stop()
@@ -108,12 +112,12 @@ func _physics_process(delta: float) -> void:
 				if has_sword_bainha:
 					$AnimationPlayer.play("+sword+bainha")
 					$equipedFootsteps.play()
-				if has_just_bainha:
-					$AnimationPlayer.play("-sword+bainha")
-					$unequipedFootsteps.play()
-				if !has_just_bainha and !has_sword_bainha:
-					$AnimationPlayer.play("-sword-bainha")
-					$unequipedFootsteps.play()
+#				if has_just_bainha:
+#					$AnimationPlayer.play("-sword+bainha")
+#					$unequipedFootsteps.play()
+#				if !has_just_bainha and !has_sword_bainha:
+#					$AnimationPlayer.play("-sword-bainha")
+#					$unequipedFootsteps.play()
 			else:
 				$unequipedFootsteps.stop()
 				$equipedFootsteps.stop()
@@ -124,15 +128,15 @@ func _physics_process(delta: float) -> void:
 		#se nenhum dos dois estiverem apertados:
 		direction.x = 0
 		#direção zera(fica parado)
-		if can_stand:
+		if on_floor:
 			if is_attacking == false:
 				#se ele não estiver atacando
 				if has_sword_bainha:
 					$AnimationPlayer.play("stand_side+sword+bainha")
-				if has_just_bainha:
-					$AnimationPlayer.play("stand_side-sword+bainha")
-				if !has_just_bainha and !has_sword_bainha:
-					$AnimationPlayer.play("stand_side-sword-bainha")
+#				if has_just_bainha:
+#					$AnimationPlayer.play("stand_side-sword+bainha")
+#				if !has_just_bainha and !has_sword_bainha:
+#					$AnimationPlayer.play("stand_side-sword-bainha")
 					
 	if Input.is_action_just_pressed("ui_attack") and is_attacking == false and has_sword_bainha and on_floor:
 		#J é o botão de ataque
@@ -163,32 +167,32 @@ func _physics_process(delta: float) -> void:
 		is_attacking = false
 		#como ele parou de atacar, o "is_attacking" se torna false
 	
-	if Input.is_action_pressed("ui_sword"):
-		can_switch_sword = true
-#
-	if Input.is_action_just_released("ui_sword"):
-		can_switch_sword = false	
+#	if Input.is_action_pressed("ui_sword"):
+#		can_switch_sword = true
+##
+#	if Input.is_action_just_released("ui_sword"):
+#		can_switch_sword = false	
 			
-	if has_sword_bainha and can_switch_sword and !Input.is_action_pressed("ui_left") and !Input.is_action_pressed("ui_right"):
-		has_just_bainha = true		
-		has_sword_bainha = false
-		$AnimationPlayer.play("take_in_sword")
-		yield($AnimationPlayer, "animation_finished")					
-		
-	if has_just_bainha and can_switch_sword and !Input.is_action_pressed("ui_left") and !Input.is_action_pressed("ui_right"):
-		has_just_bainha = false
-		has_sword_bainha = true
-		$AnimationPlayer.play("take_out_sword")
-		yield($AnimationPlayer, "animation_finished")
+#	if has_sword_bainha and can_switch_sword and !Input.is_action_pressed("ui_left") and !Input.is_action_pressed("ui_right"):
+#		has_just_bainha = true		
+#		has_sword_bainha = false
+#		$AnimationPlayer.play("take_in_sword")
+#		yield($AnimationPlayer, "animation_finished")					
+#
+#	if has_just_bainha and can_switch_sword and !Input.is_action_pressed("ui_left") and !Input.is_action_pressed("ui_right"):
+#		has_just_bainha = false
+#		has_sword_bainha = true
+#		$AnimationPlayer.play("take_out_sword")
+#		yield($AnimationPlayer, "animation_finished")
 						
 	if has_sword_bainha:
 		speed = 75
 		
-	if has_just_bainha:
-		speed = 80
-	
-	if !has_just_bainha and !has_sword_bainha:
-		speed = 81
+#	if has_just_bainha:
+#		speed = 80
+#
+#	if !has_just_bainha and !has_sword_bainha:
+#		speed = 81
 		
 	velocity.x = speed * direction.x
 	#multiplica a speed pela direção (direção pode ser -1,1 ou 0)
@@ -196,7 +200,13 @@ func _physics_process(delta: float) -> void:
 	velocity.y += gravity
 		
 	velocity = move_and_slide(velocity, UP)
-
+	
+	if furious:
+		$furious.visible = true
+		
+	else:
+		$furious.visible = false
+		
 func _on_damage_area_damage(damage, node) -> void:
 	life -= damage
 	emit_signal("life_scale", (float(self.life) / float(self.init_life)))
@@ -229,3 +239,5 @@ func get_bonus_life(bonus_life):
 func got_sword(boolean):
 	if boolean == true:
 		has_sword_bainha = true
+
+

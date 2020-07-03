@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/sprites/Personagem_pronto-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://scripts/player.gd" type="Script" id=2]
 [ext_resource path="res://scripts/weak_spot.gd" type="Script" id=3]
+[ext_resource path="res://assets/sprites/fire.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "+sword+bainha"
@@ -213,12 +214,17 @@ tracks/0/keys = {
 collision_mask = 2
 script = ExtResource( 2 )
 
+[node name="furious" type="Sprite" parent="."]
+visible = false
+position = Vector2( 136.956, 104.424 )
+texture = ExtResource( 4 )
+
 [node name="HumanBase2" type="Sprite" parent="."]
 position = Vector2( 136.862, 104.248 )
 texture = ExtResource( 1 )
 vframes = 12
 hframes = 8
-frame = 87
+frame = 80
 
 [node name="damage_area" type="Area2D" parent="."]
 position = Vector2( 136.656, 104.424 )
