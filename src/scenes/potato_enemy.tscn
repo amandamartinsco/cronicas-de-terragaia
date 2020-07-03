@@ -66,7 +66,6 @@ anims/walk = SubResource( 2 )
 
 [node name="shoot" type="Timer" parent="."]
 wait_time = 7.0
-autostart = true
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 0.132265, 14.7539 )

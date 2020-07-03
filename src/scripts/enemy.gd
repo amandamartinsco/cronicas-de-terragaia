@@ -134,9 +134,9 @@ func _on_weak_spot_damage(damage, node) -> void:
 		emit_signal("life_scale_enemy", (float(self.life) / float(self.init_life)))
 		#escala é mandado pra escala da barra de vidaa
 		if life <= 0:
+#			$AnimationPlayer.play("die")
+#			yield($AnimationPlayer, "animation_finished")
 			spawn_maca()
-			$AnimationPlayer.play("die")
-			#yield($AnimationPlayer, "animation_finished")
 			emit_signal("pode_dropar", $".".position) 
 			#o sinal é mandado indicando que é possível dropar o item agora
 			queue_free()

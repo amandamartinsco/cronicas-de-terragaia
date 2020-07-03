@@ -74,10 +74,12 @@ func _physics_process(delta: float) -> void:
 	#se ele entrar na tela, a física começa a funcionar
 func _on_VisibilityNotifier2D_screen_entered() -> void:
 	set_physics_process(true)
+	$shoot.start()
 
 	#se ele sair da tela, a física para de funcionar
 func _on_VisibilityNotifier2D_screen_exited() -> void:
 	set_physics_process(false)
+	$shoot.stop()
 
 func _on_weak_spot_damage(damage, node) -> void:
 		life -= damage
@@ -89,6 +91,7 @@ func _on_weak_spot_damage(damage, node) -> void:
 			emit_signal("pode_dropar", $".".position) 
 			#o sinal é mandado indicando que é possível dropar o item agora
 			queue_free()
+			
 func _on_shoot_timeout() -> void:
 	get_node("subshoot").start()
 	get_node("shoot2").start()
