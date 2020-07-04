@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://assets/tileset/cenario.tres" type="TileSet" id=2]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=3]
@@ -36,6 +36,8 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4.60236, 22.5586 )
 
+[sub_resource type="CircleShape2D" id=2]
+
 [node name="enemy" type="Node2D"]
 position = Vector2( 0.717041, -10.7546 )
 __meta__ = {
@@ -55,7 +57,7 @@ tile_data = PoolIntArray( 0, 14, 0, 1, 14, 0, 2, 14, 0, 3, 14, 0, 4, 14, 0, 5, 1
 [node name="player" parent="." groups=[
 "player",
 ] instance=ExtResource( 3 )]
-position = Vector2( 2742.39, -21.2285 )
+position = Vector2( 158.361, -4.50087 )
 
 [node name="HumanBase2" parent="player" index="1"]
 frame = 16
@@ -226,7 +228,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Area2D" parent="." instance=ExtResource( 10 )]
+[node name="Pilar" parent="." instance=ExtResource( 10 )]
 position = Vector2( 2922.28, 63.3041 )
 cenas = "res://scenes/part_2.tscn"
 
@@ -242,9 +244,6 @@ position = Vector2( 1274.87, 169.614 )
 
 [node name="enemy" parent="enemies" instance=ExtResource( 24 )]
 position = Vector2( 975.482, 120.799 )
-
-[node name="enemy6" parent="enemies" instance=ExtResource( 24 )]
-position = Vector2( 680.843, 103.735 )
 
 [node name="enemy2" parent="enemies" instance=ExtResource( 24 )]
 position = Vector2( 1402.05, 136.637 )
@@ -329,5 +328,30 @@ shape = SubResource( 1 )
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="walls"]
 position = Vector2( 2771.76, 109.346 )
 shape = SubResource( 1 )
+
+[node name="dialog_areas" type="Node2D" parent="."]
+
+[node name="0" type="Area2D" parent="dialog_areas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dialog_areas/0"]
+position = Vector2( 342.02, 101.53 )
+shape = SubResource( 2 )
+
+[node name="1" type="Area2D" parent="dialog_areas"]
+position = Vector2( 311.46, -7.62939e-06 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dialog_areas/1"]
+position = Vector2( 342.02, 101.53 )
+shape = SubResource( 2 )
+
+[node name="2" type="Area2D" parent="dialog_areas"]
+position = Vector2( 1344.87, 6.78876 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dialog_areas/2"]
+position = Vector2( 342.02, 101.53 )
+shape = SubResource( 2 )
+[connection signal="area_entered" from="dialog_areas/0" to="UI/DialogBox" method="_on_Area2D2_area_entered"]
+[connection signal="area_entered" from="dialog_areas/1" to="UI/DialogBox" method="_on_1_area_entered"]
+[connection signal="area_entered" from="dialog_areas/2" to="UI/DialogBox" method="_on_2_area_entered"]
 
 [editable path="player"]

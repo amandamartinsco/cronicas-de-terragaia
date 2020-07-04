@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://assets/tileset/cenario.tres" type="TileSet" id=2]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=3]
@@ -30,6 +30,8 @@
 [ext_resource path="res://assets/sprites/l_idle.png" type="Texture" id=30]
 [ext_resource path="res://assets/sprites/k_idle.png" type="Texture" id=31]
 [ext_resource path="res://assets/sprites/j_idle.png" type="Texture" id=32]
+
+[sub_resource type="CircleShape2D" id=1]
 
 [node name="enemy" type="Node2D"]
 __meta__ = {
@@ -270,5 +272,14 @@ position = Vector2( 1629.08, 103.622 )
 
 [node name="enemy" parent="enemies" instance=ExtResource( 26 )]
 position = Vector2( 2498.61, 73.7421 )
+
+[node name="dialog_areas" type="Node2D" parent="."]
+
+[node name="3" type="Area2D" parent="dialog_areas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dialog_areas/3"]
+position = Vector2( 318.522, 102.737 )
+shape = SubResource( 1 )
+[connection signal="area_entered" from="dialog_areas/3" to="UI/DialogBox" method="_on_3_area_entered"]
 
 [editable path="player"]
