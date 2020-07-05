@@ -90,6 +90,6 @@ ui_shield={
 [layer_names]
 
 2d_physics/layer_1="Player"
-2d_physics/layer_2="Enemie"
-2d_physics/layer_3="Shoot"
+2d_physics/layer_2="Enemies"
+2d_physics/layer_3="Shield"
 2d_physics/layer_4="Walls"

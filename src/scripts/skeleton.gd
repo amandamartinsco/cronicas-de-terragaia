@@ -39,11 +39,6 @@ func _physics_process(delta: float) -> void:
 	
 	velocity.y = gravity
 	#a velocidade no eixo y é equivalente à gravidade
-
-	if is_on_wall():
-		#se ele detectar uma parede
-		velocity.x = velocity.x * -1
-		#velocidade é invertida no eixo 	
 				
 	if velocity.x >= 0:
 		olhar_direita = true
@@ -109,3 +104,6 @@ func _on_Area2D_area_entered(area: Area2D) -> void:
 	if area.has_method("hit"):
 		area.hit(damage, self)
 		
+func _on_directions_area_entered(area: Area2D) -> void:
+	if area.collision_layer == 8:
+		velocity.x *= -1

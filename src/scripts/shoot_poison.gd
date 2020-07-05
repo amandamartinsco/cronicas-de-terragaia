@@ -51,5 +51,6 @@ func _on_shoot_poison_area_entered(area: Area2D) -> void:
 		if area.has_method("hit"):
 			area.hit(damage, self)
 			autodestroy()	
-	if area.collision_layer == 8:
+			
+	if area.collision_layer == 4:
 		autodestroy()

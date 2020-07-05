@@ -44,10 +44,10 @@ func _physics_process(delta: float) -> void:
 	velocity.y = gravity
 	#a velocidade no eixo y é equivalente à gravidade
 	
-	if is_on_wall():
-		#se ele detectar uma parede
-		velocity.x = velocity.x * -1
-		#velocidade é invertida no eixo 	
+#	if is_on_wall():
+#		#se ele detectar uma parede
+#		velocity.x = velocity.x * -1
+#		#velocidade é invertida no eixo 
 			
 	if velocity.x >= 0:
 		olhar_direita = true
@@ -119,3 +119,6 @@ func spawn_maca():
 	get_parent().add_child(maca)
 	#é pra usar call_deferred mas se usar não colisão entre a maçã e o personagem		
 
+func _on_direction_area_entered(area: Area2D) -> void:
+	if area.collision_layer == 8:
+		velocity.x *= -1

@@ -48,14 +48,6 @@ func _physics_process(delta: float) -> void:
 	
 	velocity.y = gravity
 	#a velocidade no eixo y é equivalente à gravidade
-	
-	if is_on_wall():
-		if !atacando:
-			#se ele detectar uma parede
-			velocity.x = velocity.x * -1
-			#velocidade é invertida no eixo x
-			$"RayCast2D".cast_to.x *= -1
-			#também inverte a direção do RayCast
 		
 	if $"RayCast2D".is_colliding():
 		if !atacando:
@@ -73,6 +65,7 @@ func _physics_process(delta: float) -> void:
 			$AnimationPlayer.play("run")
 				
 	else:
+		atacando = false
 		if !atacando:
 			#se o RayCast não estiver colidindo
 			
@@ -121,8 +114,9 @@ func _on_VisibilityNotifier2D_screen_exited() -> void:
 
 #se a área de ataque encontrar outra área que tem o método hit, ela manda o damage pra ela
 func _on_attack_area_entered(area: Area2D) -> void:
-	atacando = true
-	attack()
+	if area.collision_layer == 1 or area.collision_layer == 4:
+		atacando = true
+		attack()
 	if area.has_method("hit"):
 		area.hit(damage, self)
 
@@ -162,3 +156,13 @@ func attack():
 	if velocity.x >= 0:
 		velocity.x = 30	
 	$AnimationPlayer.play("run")
+
+
+func _on_direction_area_entered(area: Area2D) -> void:
+	if area.collision_layer == 8:
+	#	if !atacando:
+		#se ele detectar uma parede
+		velocity.x = velocity.x * -1
+		#velocidade é invertida no eixo x
+		$"RayCast2D".cast_to.x *= -1
+		#também inverte a direção do RayCast

@@ -6,7 +6,7 @@
 [ext_resource path="res://scripts/weak_spot.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10.4571, 13.1684 )
+extents = Vector2( 14.3644, 13.1684 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "walk"
@@ -29,7 +29,6 @@ tracks/0/keys = {
 "potato_enemy",
 ]]
 collision_layer = 2
-collision_mask = 9
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -76,9 +75,17 @@ one_shot = true
 
 [node name="shoot2" type="Timer" parent="."]
 wait_time = 0.4
+
+[node name="direction" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="direction"]
+polygon = PoolVector2Array( -6.2734, -14.1045, -18.9962, -3.82347, -21.0524, 10.0559, 17.5015, 11.3411, 22.642, -8.57845 )
 [connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="damage" from="weak_spot" to="." method="_on_weak_spot_damage"]
 [connection signal="timeout" from="shoot" to="." method="_on_shoot_timeout"]
 [connection signal="timeout" from="subshoot" to="." method="_on_subshoot_timeout"]
 [connection signal="timeout" from="shoot2" to="." method="_on_shoot2_timeout"]
+[connection signal="area_entered" from="direction" to="." method="_on_direction_area_entered"]
