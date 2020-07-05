@@ -8,9 +8,6 @@ var scale = 1
 var power_scale = 0.0 setget set_power_scale
 
 func _ready() -> void:
-#	rect_rotation = 180
-#	#vira ela 180 graus pra barra descer ao invés de subir
-#	rect_position += init_rect_size
 	POWER.connect("power_changed", self, "on_power_changed")
 	
 func _process(delta: float) -> void:

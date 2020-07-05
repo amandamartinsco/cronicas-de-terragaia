@@ -57,7 +57,7 @@ tile_data = PoolIntArray( 0, 14, 0, 1, 14, 0, 2, 14, 0, 3, 14, 0, 4, 14, 0, 5, 1
 [node name="player" parent="." groups=[
 "player",
 ] instance=ExtResource( 3 )]
-position = Vector2( 158.361, -4.50087 )
+position = Vector2( 147.083, -4.50087 )
 
 [node name="HumanBase2" parent="player" index="1"]
 frame = 16

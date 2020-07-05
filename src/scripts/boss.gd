@@ -14,9 +14,11 @@ var pre_rock = preload("res://scenes/rock.tscn")
 
 var bodies = []
 
+signal pode_falar(po)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	get_tree().get_nodes_in_group("dialog")[0].connect("end", self, "finish")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -24,6 +26,7 @@ func _process(delta: float) -> void:
 		if $shoot_timer.is_stopped():
 			$shoot_timer.start()
 	$AnimationPlayer.play("stand")
+	
 	
 	if Input.is_action_just_pressed("ui_page_up"):
 		$Sprite2.visible = true
@@ -36,10 +39,18 @@ func _process(delta: float) -> void:
 func _on_weak_spots_damage(damage, node) -> void:
 		life -= damage
 		emit_signal("life_scale_enemy", (float(self.life) / float(self.init_life)))
-
-func _on_sensor_weak_area_entered(area: Area2D) -> void:
-	position += Vector2(50,0)
-	$AnimationPlayer.play("fade")
+		if life <= 0:
+			emit_signal("pode_falar", true)
+			$Sprite2.queue_free()
+			$Sprite3.queue_free()
+			$barradevida_inimigo.queue_free()
+			$sensor_attack.queue_free()
+			bodies.clear()
+			$shoot_timer.queue_free()
+			
+#func _on_sensor_weak_area_entered(area: Area2D) -> void:
+#	position += Vector2(50,0)
+#	$AnimationPlayer.play("fade")
 
 func _on_sensor_attack_body_entered(body: Node) -> void:
 	bodies.append(body)
@@ -57,3 +68,8 @@ func fire():
 		get_parent().add_child(rock)
 	else:
 		$shoot_timer.stop()
+		
+func finish(po):
+	if po == true:
+		get_tree().get_nodes_in_group("dialog")[0].queue_free()
+		queue_free()

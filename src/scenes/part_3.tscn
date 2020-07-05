@@ -1,12 +1,10 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=25 format=2]
 
-[ext_resource path="res://scenes/pilar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tileset/cenario.tres" type="TileSet" id=2]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/barradevida.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Background_part_2.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/power_hp.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/batata.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/boss.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/dialog.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/passagem_de_cena.tscn" type="PackedScene" id=10]
@@ -24,8 +22,6 @@
 [ext_resource path="res://assets/sfx/Passo.wav" type="AudioStream" id=22]
 [ext_resource path="res://assets/sprites/i_idle.png" type="Texture" id=23]
 [ext_resource path="res://assets/sprites/l_idle.png" type="Texture" id=24]
-[ext_resource path="res://scenes/skeleton.tscn" type="PackedScene" id=25]
-[ext_resource path="res://scenes/enemy_real.tscn" type="PackedScene" id=26]
 [ext_resource path="res://assets/sprites/k_idle.png" type="Texture" id=27]
 [ext_resource path="res://assets/sprites/j_idle.png" type="Texture" id=28]
 
@@ -35,9 +31,6 @@ __meta__ = {
 "_edit_vertical_guides_": [ 308.279, 307.85 ]
 }
 
-[node name="enemy" parent="." instance=ExtResource( 26 )]
-position = Vector2( 2498.61, 73.7421 )
-
 [node name="TileMap" type="TileMap" parent="."]
 rotation = -0.000232642
 tile_set = ExtResource( 2 )
@@ -45,14 +38,14 @@ cell_size = Vector2( 16, 16 )
 collision_layer = 0
 collision_mask = 3
 format = 1
-tile_data = PoolIntArray( 0, 10, 0, 72, 10, 0, 65536, 10, 0, 65608, 10, 0, 131072, 10, 0, 131144, 10, 0, 196608, 10, 0, 196680, 10, 0, 262144, 10, 0, 262216, 10, 0, 327680, 10, 0, 327752, 10, 0, 393216, 10, 0, 393288, 10, 0, 458752, 10, 0, 458824, 10, 0, 524288, 10, 0, 524360, 10, 0, 589824, 6, 0, 589825, 22, 0, 589826, 22, 0, 589827, 22, 0, 589828, 22, 0, 589829, 22, 0, 589830, 22, 0, 589831, 22, 0, 589832, 22, 0, 589833, 22, 0, 589834, 22, 0, 589835, 22, 0, 589836, 22, 0, 589837, 22, 0, 589838, 22, 0, 589839, 22, 0, 589840, 22, 0, 589841, 22, 0, 589842, 22, 0, 589843, 22, 0, 589844, 22, 0, 589845, 22, 0, 589846, 22, 0, 589847, 22, 0, 589848, 22, 0, 589849, 22, 0, 589850, 22, 0, 589851, 22, 0, 589852, 22, 0, 589853, 22, 0, 589854, 22, 0, 589855, 22, 0, 589856, 22, 0, 589857, 22, 0, 589858, 22, 0, 589859, 22, 0, 589860, 22, 0, 589861, 22, 0, 589862, 22, 0, 589863, 22, 0, 589864, 22, 0, 589865, 22, 0, 589866, 22, 0, 589867, 22, 0, 589868, 22, 0, 589869, 22, 0, 589870, 22, 0, 589871, 22, 0, 589872, 22, 0, 589873, 22, 0, 589874, 22, 0, 589875, 22, 0, 589876, 22, 0, 589877, 22, 0, 589878, 22, 0, 589879, 22, 0, 589880, 22, 0, 589881, 22, 0, 589882, 22, 0, 589883, 22, 0, 589884, 22, 0, 589885, 22, 0, 589886, 22, 0, 589887, 22, 0, 589888, 22, 0, 589889, 22, 0, 589890, 22, 0, 589891, 22, 0, 589892, 22, 0, 589893, 22, 0, 589894, 22, 0, 589895, 22, 0, 589896, 8, 0 )
+tile_data = PoolIntArray( -65505, 4, 0, 0, 10, 0, 10, 4, 0, 11, 4, 0, 12, 4, 0, 13, 4, 0, 14, 4, 0, 15, 4, 0, 16, 4, 0, 17, 3, 0, 28, 5, 0, 29, 4, 0, 30, 4, 0, 31, 4, 0, 32, 4, 0, 33, 4, 0, 34, 4, 0, 35, 4, 0, 36, 4, 0, 72, 10, 0, 65536, 10, 0, 65546, 4, 0, 65547, 4, 0, 65548, 4, 0, 65549, 4, 0, 65550, 4, 0, 65551, 4, 0, 65552, 4, 0, 65553, 3, 0, 65564, 5, 0, 65565, 4, 0, 65566, 4, 0, 65567, 4, 0, 65568, 4, 0, 65569, 4, 0, 65570, 4, 0, 65571, 4, 0, 65572, 4, 0, 65608, 10, 0, 131072, 10, 0, 131082, 4, 0, 131083, 4, 0, 131084, 4, 0, 131085, 4, 0, 131086, 4, 0, 131087, 4, 0, 131088, 4, 0, 131089, 3, 0, 131100, 5, 0, 131101, 4, 0, 131102, 4, 0, 131103, 4, 0, 131104, 4, 0, 131105, 4, 0, 131106, 4, 0, 131107, 4, 0, 131108, 4, 0, 131144, 10, 0, 196608, 10, 0, 196619, 4, 0, 196620, 4, 0, 196621, 4, 0, 196622, 4, 0, 196623, 4, 0, 196624, 4, 0, 196625, 3, 0, 196636, 5, 0, 196637, 4, 0, 196638, 4, 0, 196639, 4, 0, 196640, 4, 0, 196641, 4, 0, 196642, 4, 0, 196643, 4, 0, 196644, 4, 0, 196680, 10, 0, 262144, 10, 0, 262154, 4, 0, 262155, 4, 0, 262156, 4, 0, 262157, 4, 0, 262158, 4, 0, 262159, 4, 0, 262160, 4, 0, 262161, 3, 0, 262172, 5, 0, 262173, 4, 0, 262174, 4, 0, 262175, 4, 0, 262176, 4, 0, 262177, 4, 0, 262178, 4, 0, 262179, 4, 0, 262180, 4, 0, 262216, 10, 0, 327680, 10, 0, 327690, 4, 0, 327691, 4, 0, 327692, 4, 0, 327693, 4, 0, 327694, 4, 0, 327695, 4, 0, 327696, 4, 0, 327697, 3, 0, 327708, 5, 0, 327709, 4, 0, 327710, 4, 0, 327711, 4, 0, 327712, 4, 0, 327713, 4, 0, 327714, 4, 0, 327715, 4, 0, 327716, 4, 0, 327752, 10, 0, 393216, 10, 0, 393226, 4, 0, 393227, 4, 0, 393228, 4, 0, 393229, 4, 0, 393230, 4, 0, 393231, 4, 0, 393232, 4, 0, 393233, 3, 0, 393244, 5, 0, 393245, 4, 0, 393246, 4, 0, 393247, 4, 0, 393248, 4, 0, 393249, 4, 0, 393250, 4, 0, 393251, 4, 0, 393252, 4, 0, 393288, 10, 0, 458752, 10, 0, 458762, 4, 0, 458763, 4, 0, 458764, 4, 0, 458765, 4, 0, 458766, 4, 0, 458767, 4, 0, 458768, 4, 0, 458769, 3, 0, 458780, 5, 0, 458781, 4, 0, 458782, 4, 0, 458783, 4, 0, 458784, 4, 0, 458785, 4, 0, 458786, 4, 0, 458787, 4, 0, 458788, 4, 0, 458824, 10, 0, 524288, 10, 0, 524298, 4, 0, 524299, 4, 0, 524300, 4, 0, 524301, 4, 0, 524302, 4, 0, 524303, 4, 0, 524304, 4, 0, 524305, 3, 0, 524316, 5, 0, 524317, 4, 0, 524318, 4, 0, 524319, 4, 0, 524320, 4, 0, 524321, 4, 0, 524322, 4, 0, 524323, 4, 0, 524324, 4, 0, 524360, 10, 0, 589824, 6, 0, 589825, 22, 0, 589826, 22, 0, 589827, 22, 0, 589828, 22, 0, 589829, 22, 0, 589830, 22, 0, 589831, 22, 0, 589832, 22, 0, 589833, 22, 0, 589834, 7, 0, 589835, 7, 0, 589836, 7, 0, 589837, 7, 0, 589838, 7, 0, 589839, 7, 0, 589840, 7, 0, 589841, 7, 0, 589842, 22, 0, 589843, 22, 0, 589844, 22, 0, 589845, 22, 0, 589846, 22, 0, 589847, 22, 0, 589848, 22, 0, 589849, 22, 0, 589850, 22, 0, 589851, 22, 0, 589852, 7, 0, 589853, 7, 0, 589854, 7, 0, 589855, 7, 0, 589856, 7, 0, 589857, 7, 0, 589858, 7, 0, 589859, 7, 0, 589860, 7, 0, 589861, 22, 0, 589862, 22, 0, 589863, 22, 0, 589864, 22, 0, 589865, 22, 0, 589866, 22, 0, 589867, 22, 0, 589868, 22, 0, 589869, 22, 0, 589870, 22, 0, 589871, 22, 0, 589872, 22, 0, 589873, 22, 0, 589874, 22, 0, 589875, 22, 0, 589876, 22, 0, 589877, 22, 0, 589878, 22, 0, 589879, 22, 0, 589880, 22, 0, 589881, 22, 0, 589882, 22, 0, 589883, 22, 0, 589884, 22, 0, 589885, 22, 0, 589886, 22, 0, 589887, 22, 0, 589888, 22, 0, 589889, 22, 0, 589890, 22, 0, 589891, 22, 0, 589892, 22, 0, 589893, 22, 0, 589894, 22, 0, 589895, 22, 0, 589896, 8, 0 )
 
 [node name="player" parent="." groups=[
 "player",
 ] instance=ExtResource( 3 )]
-position = Vector2( 43.2893, 27.2272 )
+position = Vector2( 234.634, 26.5289 )
 
-[node name="HumanBase2" parent="player" index="0"]
+[node name="HumanBase2" parent="player" index="1"]
 frame = 16
 
 [node name="swordHit" type="AudioStreamPlayer2D" parent="player"]
@@ -92,11 +85,6 @@ position = Vector2( 0, -2.38419e-07 )
 stream = ExtResource( 12 )
 volume_db = -6.0
 
-[node name="enemies" type="Node2D" parent="."]
-
-[node name="KinematicBody2D" parent="enemies" instance=ExtResource( 7 )]
-position = Vector2( 85.2458, 9.72915 )
-
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="backgroundLife" type="ColorRect" parent="UI"]
@@ -132,11 +120,13 @@ margin_right = 196.0
 margin_bottom = 62.0
 color = Color( 0.0901961, 0.0862745, 0.843137, 0 )
 
-[node name="DialogBox" parent="UI" instance=ExtResource( 9 )]
-margin_left = -0.0104981
-margin_top = -4.20646
-margin_right = -0.010376
-margin_bottom = -4.20648
+[node name="DialogBox" parent="UI" groups=[
+"dialogo",
+] instance=ExtResource( 9 )]
+margin_left = 104.754
+margin_top = -454.66
+margin_right = 104.754
+margin_bottom = -454.66
 
 [node name="hud" type="TextureRect" parent="UI"]
 margin_left = 11.6488
@@ -232,24 +222,11 @@ stream = ExtResource( 19 )
 volume_db = -12.0
 autoplay = true
 
-[node name="enemy2" parent="." instance=ExtResource( 26 )]
-position = Vector2( 2730.85, 71.7577 )
-
 [node name="ParallaxBackground" parent="." instance=ExtResource( 5 )]
 
-[node name="pilar" parent="." instance=ExtResource( 1 )]
-visible = false
-
-[node name="skeleton3" parent="." instance=ExtResource( 25 )]
-position = Vector2( 2539.96, 121.325 )
-
-[node name="skeleton4" parent="." instance=ExtResource( 25 )]
-position = Vector2( 2809.18, 120.467 )
-
-[node name="enemy3" parent="." instance=ExtResource( 26 )]
-position = Vector2( 3207.27, 87.7477 )
-
-[node name="boss" parent="." instance=ExtResource( 8 )]
+[node name="boss" parent="." groups=[
+"boss",
+] instance=ExtResource( 8 )]
 position = Vector2( 370.864, 92.8131 )
 
 [editable path="player"]

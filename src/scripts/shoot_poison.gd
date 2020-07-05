@@ -36,7 +36,7 @@ func set_dir(val):
 	#todo Vector 2 consegue gerar um angle()
 
 func _on_shoot_poison_body_entered(body: Node) -> void:
-	if body.collision_layer == 1:
+	if body.collision_layer == 1 or body.collision_layer == 8:
 		#é 4 mas tem q ver quando passa o mouse em cima
 		autodestroy()
 	
@@ -51,3 +51,5 @@ func _on_shoot_poison_area_entered(area: Area2D) -> void:
 		if area.has_method("hit"):
 			area.hit(damage, self)
 			autodestroy()	
+	if area.collision_layer == 8:
+		autodestroy()

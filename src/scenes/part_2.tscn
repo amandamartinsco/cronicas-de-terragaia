@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://assets/tileset/cenario.tres" type="TileSet" id=2]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=3]
@@ -32,6 +32,9 @@
 [ext_resource path="res://assets/sprites/j_idle.png" type="Texture" id=32]
 
 [sub_resource type="CircleShape2D" id=1]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 5.70752, 18.9902 )
 
 [node name="enemy" type="Node2D"]
 __meta__ = {
@@ -280,6 +283,66 @@ position = Vector2( 2498.61, 73.7421 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dialog_areas/3"]
 position = Vector2( 318.522, 102.737 )
 shape = SubResource( 1 )
+
+[node name="4" type="Area2D" parent="dialog_areas"]
+position = Vector2( 575.168, -1.19165 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dialog_areas/4"]
+position = Vector2( 318.522, 102.737 )
+shape = SubResource( 1 )
+
+[node name="5" type="Area2D" parent="dialog_areas"]
+position = Vector2( 789.253, -0.753681 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dialog_areas/5"]
+position = Vector2( 318.522, 102.737 )
+shape = SubResource( 1 )
+
+[node name="6" type="Area2D" parent="dialog_areas"]
+position = Vector2( 896.792, 30.294 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dialog_areas/6"]
+position = Vector2( 318.522, 102.737 )
+shape = SubResource( 1 )
+
+[node name="walls" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls"]
+position = Vector2( 1205.67, 129.908 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="walls"]
+position = Vector2( 1517.75, 129.501 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="walls"]
+position = Vector2( 1546.19, 115.85 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="walls"]
+position = Vector2( 1938.38, 113.113 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="walls"]
+position = Vector2( 1962.12, 101.94 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="walls"]
+position = Vector2( 2212.83, 99.1462 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="walls"]
+position = Vector2( 2283.69, 132.541 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="walls"]
+position = Vector2( 2894.29, 132.862 )
+shape = SubResource( 2 )
 [connection signal="area_entered" from="dialog_areas/3" to="UI/DialogBox" method="_on_3_area_entered"]
+[connection signal="area_entered" from="dialog_areas/4" to="UI/DialogBox" method="_on_4_area_entered"]
+[connection signal="area_entered" from="dialog_areas/5" to="UI/DialogBox" method="_on_5_area_entered"]
+[connection signal="area_entered" from="dialog_areas/6" to="UI/DialogBox" method="_on_6_area_entered"]
 
 [editable path="player"]
