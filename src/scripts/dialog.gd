@@ -7,7 +7,13 @@ var max_page = 0
 
 signal end(po)
 
+func _ready() -> void:
+	page = 0
+	max_page = 0
+	set_process_input(false)
+
 func _process(delta: float) -> void:
+	
 	if get_parent().get_parent().get_filename() == "res://scenes/part_3.tscn":
 		get_tree().get_nodes_in_group("boss")[0].connect("pode_falar", self, "_boss")
 		
@@ -33,12 +39,9 @@ func _input(event):
 		
 	else:
 		$"TextureRect/next-indicator".visible = false
+		
 func _on_Timer_timeout() -> void:
 	$TextureRect/RichTextLabel.visible_characters += 1
-
-func _on_0_area_entered(area: Area2D) -> void:
-	talk(0,0)
-	get_tree().get_nodes_in_group("dialog_areas")[0].queue_free()
 	
 func talk(begin, end):
 	$TextureRect.visible = true
@@ -47,6 +50,10 @@ func talk(begin, end):
 	$TextureRect/RichTextLabel.bbcode_text = dialog[page]
 	$TextureRect/RichTextLabel.visible_characters = 0
 	set_process_input(true)	
+	
+func _on_0_area_entered(area: Area2D) -> void:
+	talk(0,0)
+	get_tree().get_nodes_in_group("dialog_areas")[3].queue_free()
 
 func _on_1_area_entered(area: Area2D) -> void:
 	talk(1,1)
@@ -79,6 +86,6 @@ func _boss(po):
 
 func _on_7_area_entered(area: Area2D) -> void:
 	talk(6,6)
-
+	get_tree().get_nodes_in_group("dialog_areas")[0].queue_free()
 func _on_8_area_entered(area: Area2D) -> void:
 	talk(9,9)

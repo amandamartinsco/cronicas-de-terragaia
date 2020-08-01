@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hud.png-64f1f93c12f778ceae37068a5f80696e.stex"
+path="res://.import/pausar.png-3cdd0eeb4e2945d119e67d12d5d24994.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/hud.png"
-dest_files=[ "res://.import/hud.png-64f1f93c12f778ceae37068a5f80696e.stex" ]
+source_file="res://assets/sprites/pausar.png"
+dest_files=[ "res://.import/pausar.png-3cdd0eeb4e2945d119e67d12d5d24994.stex" ]
 
 [params]
 

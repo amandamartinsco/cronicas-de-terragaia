@@ -52,6 +52,10 @@ func _ready() -> void:
 	
 func _physics_process(delta: float) -> void:	
 	
+#	if life == 0:
+#		$death.play()
+#		get_tree().change_scene("res://scenes/gameOver.tscn")
+		
 	#PULO
 	
 	if is_on_floor():
@@ -185,7 +189,7 @@ func _on_damage_area_damage(damage, node) -> void:
 	life -= damage
 	emit_signal("life_scale", (float(self.life) / float(self.init_life)))
 	$damage.play()
-	if life == 0:
+	if life <= 0:
 		$death.play()
 		get_tree().change_scene("res://scenes/gameOver.tscn")
 
