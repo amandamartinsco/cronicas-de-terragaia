@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/cenário/background_forest-export.png" type="Texture" id=3]
 [ext_resource path="res://assets/sprites/restart_pressed.png" type="Texture" id=4]
 [ext_resource path="res://assets/sprites/restart_idle.png" type="Texture" id=5]
-[ext_resource path="res://assets/musics/Game over.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/musics/Game over.ogg" type="AudioStream" id=6]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0

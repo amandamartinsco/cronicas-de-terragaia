@@ -118,6 +118,7 @@ collision_layer = 0
 shape = SubResource( 6 )
 
 [node name="shoot_timer" type="Timer" parent="."]
+wait_time = 0.7
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( -35.1221, 0 )

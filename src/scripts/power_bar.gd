@@ -39,7 +39,7 @@ func on_power_changed(po):
 	
 func set_power_scale(val):
 	#serve pra mudar o valor da escala e verificar quando isso for feito pra mudar o tamanho do retângulo
-	power_scale = val*100
+	power_scale = val*5
 	if power_scale > init_rect_size.x:
 		power_scale = init_rect_size.x
 
