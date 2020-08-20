@@ -1,6 +1,6 @@
 # About the project
 
-Game produced for Definitely Not Another Game Jam's June/2020 Edition
+Game produced on Godot Engine for Definitely Not Another Game Jam's June/2020 Edition.
 
 ## Getting Started
 
@@ -14,20 +14,14 @@ If you want to use the project for some reason, please let us know! By the way, 
 
 ### Installing
 
-We'll upload a installer for each platform at the root of the repo after the game development finishes, check it soon :D
-
-Also, we've posted the game at itch.io, check it out at this [link](https://mandacroft.itch.io/cronicas-de-terragaia).
-
-### GDD
-
-We'll use the Wiki functionality of GitHub for write the GDD, check it out! (Alert: the wiki contains spoilers!)
+We've posted the game for each plataform on itch.io, check it out [here](https://mandys.itch.io/cronicas-de-terragaia).
 
 ## Authors
 
-* **Joao** - *Game Designer* - [amandamartinsco](https://github.com/DwarFFF)
-* **Amanda** - *Game Developer & UI Designer* - [amandamartinsco](https://linktr.ee/amandamartinsco)
-* **Gino** - *Game Developer & Pixel Artist* - [ginocarlo01](https://github.com/ginocarlo01)
-* **Caio** - *Game Developer* - [Cainhu19](https://github.com/Cainhu19)
+* **Joao** - *Game Designer* - [GitHub](https://github.com/DwarFFF)
+* **Amanda** - *Game Developer & UI Designer* - [Links](https://linktr.ee/amandamartinsco)
+* **Gino** - *Game Developer & Pixel Artist* - [GitHub](https://github.com/ginocarlo01)
+* **Caio** - *Game Developer* - [GitHub](https://github.com/Cainhu19)
 * **Nicholas** - *SFX Producer* - [SoundCloud](https://soundcloud.com/nicholas-buck-piovan)
 * **Leonardo** - *Musician* - [SoundCloud](https://soundcloud.com/leo-bonna-692384242)
 * **Fernando** - *Pixel Artist*
