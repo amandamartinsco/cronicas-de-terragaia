@@ -2,17 +2,19 @@
 
 Game produced on Godot Engine for Definitely Not Another Game Jam's June/2020 Edition.
 
-## Getting Started
-
 Here you wake up in a world full of monsters, not sure who you are, and what happened there...
 
 Discover Terragaia and unhide its mysteries in this platform adventure game, totally originally made in a week for the [It is certainly not another game jam](https://itch.io/jam/certamente-no-outra-game-jam).
 
-### Prerequisites
+## Getting Started
 
-If you want to use the project for some reason, please let us know! By the way, you'll need Godot game engine for open the project.
+**Genre:** Rogue-Like and Action;<br>
+**Style:** Platform and Pixel Art;<br>
+**Engine:** Godot;<br>
+**Platforms:** Windows, Linux and macOS;<br>
+**Game modes:** Single-player;
 
-### Installing
+### How to play
 
 We've posted the game for each plataform on itch.io, check it out [here](https://mandys.itch.io/cronicas-de-terragaia).
 
