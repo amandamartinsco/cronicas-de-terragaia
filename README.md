@@ -4,7 +4,7 @@ Game produced on Godot Engine for Definitely Not Another Game Jam's June/2020 Ed
 
 Here you wake up in a world full of monsters, not sure who you are, and what happened there...
 
-Discover Terragaia and unhide its mysteries in this platform adventure game, totally originally made in a week for the [It is certainly not another game jam](https://itch.io/jam/certamente-no-outra-game-jam).
+Discover Terragaia and unhide its mysteries in this platform adventure game, totally originally made in a week for the [Definitely Not Another Game Jam](https://itch.io/jam/certamente-no-outra-game-jam).
 
 ## Getting Started
 
