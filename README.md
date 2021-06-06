@@ -10,7 +10,7 @@
 
 ## 🗡️ Overview
 
-Here you wake up in a world full of monsters, not sure who you are, and what happened there...
+> Here you wake up in a world full of monsters, not sure who you are, and what happened there...
 
 ## 📚 About the project
 
