@@ -20,11 +20,11 @@ Discover Terragaia and unhide its mysteries in this platform adventure game, ori
 **Style:** Platform and Pixel Art;<br>
 **Engine:** Godot;<br>
 **Platforms:** Windows, Linux and macOS;<br>
-**Game modes:** Single-player;
+**Game modes:** Single-player.
 
 ## 🕹️ How to play
 
-We've posted the game for each plataform on itch.io, check it out [here](https://amanditadev.itch.io/cronicas-de-terragaia).
+We've published the game for each plataform on itch.io, check it out [here](https://amanditadev.itch.io/cronicas-de-terragaia).
 
 ## 👋 Authors
 
