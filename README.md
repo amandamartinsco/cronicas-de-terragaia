@@ -8,9 +8,9 @@
   <img src="/extras/logo.png" alt="Chronicles of Terragaia logo made with an orange outline and green gradient fill pixel-art typography">
 </p>
 
-<p align="center"> 
-  Here you wake up in a world full of monsters, not sure who you are, and what happened there...
-</p>
+## 🗡️ Overview
+
+Here you wake up in a world full of monsters, not sure who you are, and what happened there...
 
 ## 📚 About the project
 
