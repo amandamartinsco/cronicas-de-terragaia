@@ -8,13 +8,13 @@
   <img src="/extras/logo.png" alt="Chronicles of Terragaia logo made with an orange outline and green gradient fill pixel-art typography">
 </p>
 
-## 🗡️ Here you wake up in a world full of monsters, not sure who you are, and what happened there...
-
-> Discover Terragaia and unhide its mysteries in this platform adventure game, originally and made in one week for the jam.
+<p align="center"> 
+  Here you wake up in a world full of monsters, not sure who you are, and what happened there...
+</p>
 
 ## 📚 About the project
 
-Game produced on Godot Engine for [Definitely Not Another Game Jam's June/2020 Edition](https://itch.io/jam/certamente-no-outra-game-jam).
+Discover Terragaia and unhide its mysteries in this platform adventure game, originally and made in one week for the [Definitely Not Another Game Jam's June/2020 Edition](https://itch.io/jam/certamente-no-outra-game-jam).
 
 **Genre:** Rogue-Like and Action;<br>
 **Style:** Platform and Pixel Art;<br>
